@@ -24,7 +24,7 @@ Context files should follow this format:
 ## Current State
 Description of the current state of this area.
 
-## Key Information
+## Relevant Information
 Important information relevant to this context.
 
 ## Related Files
