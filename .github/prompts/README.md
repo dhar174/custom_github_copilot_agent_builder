@@ -23,9 +23,9 @@ List of parameters that can be customized:
 
 ## Template
 
-'''
+```
 [Your prompt template here with {parameter} placeholders]
-'''
+```
 
 ## Example Usage
 
@@ -35,9 +35,9 @@ List of parameters that can be customized:
 - `parameter2`: value2
 
 **Rendered Prompt**:
-'''
+```
 [The prompt with actual values substituted]
-'''
+```
 
 **Expected Result**:
 Description of what this prompt should accomplish.

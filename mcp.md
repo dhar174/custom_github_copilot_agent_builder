@@ -55,6 +55,8 @@ Agents interact with users through:
 ## Context File Formats
 
 ### .context.md Format
+
+**Basic Format:**
 ```markdown
 # Context: [Title]
 
@@ -68,16 +70,27 @@ Agents interact with users through:
 - [List of related files]
 ```
 
+**Optional Sections:**
+- `## Recent Changes` - Brief history of recent changes
+- `## Next Steps` - Planned work or considerations
+
 ### .memory.md Format
+
+**Basic Format:**
 ```markdown
 # Memory: [Title]
 
 ## Learnings
 [Important learnings to remember]
 
-## Decisions
-[Key decisions made]
-
 ## Patterns
 [Patterns observed]
+
+## Decisions
+[Key decisions made]
 ```
+
+**Optional Sections:**
+- `## Gotchas` - Common pitfalls or issues to avoid
+- `## Resources` - Useful resources and references
+- `## Timestamp` - When this memory was created or last updated

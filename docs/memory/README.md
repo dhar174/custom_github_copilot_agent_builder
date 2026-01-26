@@ -24,11 +24,12 @@ Memory files should follow this format:
 ## Learnings
 Important lessons learned during development.
 
+## Patterns
+Recurring patterns or best practices discovered.
+
 ## Decisions
 Key decisions made and their rationale.
 
-## Patterns
-Recurring patterns or best practices discovered.
 ## Gotchas
 Common pitfalls or issues to avoid.
 
