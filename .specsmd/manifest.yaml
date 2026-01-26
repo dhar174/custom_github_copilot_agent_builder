@@ -1,0 +1,8 @@
+flow: aidlc
+version: 0.1.22
+installed_at: '2026-01-26T21:05:26.295Z'
+tools:
+  - copilot
+  - antigravity
+  - gemini
+  - codex
