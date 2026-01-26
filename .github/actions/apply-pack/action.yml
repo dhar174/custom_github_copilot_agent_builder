@@ -1,0 +1,45 @@
+name: 'AgentOps Pack Applier'
+description: 'Apply standardized Copilot/AgentOps pack with configurable subsets and permissions defaults'
+author: 'dhar174'
+
+inputs:
+  repo:
+    description: 'Target repository (owner/name)'
+    required: true
+  pack_version:
+    description: 'Pack version or ref to apply'
+    required: false
+  pack_components:
+    description: 'Comma-separated list of pack components to apply'
+    required: false
+  config_path:
+    description: 'Path to config file in target repo'
+    required: false
+    default: '.github/agentops-pack.yml'
+  apply:
+    description: 'Apply changes (true) or dry-run (false)'
+    required: false
+    default: 'false'
+  override_token:
+    description: 'Optional PAT/App token for cross-repo writes'
+    required: false
+  permissions_mode:
+    description: "Permission profile: 'default' or 'cross-repo'"
+    required: false
+    default: 'default'
+  strict:
+    description: 'Enable strict validation (fail on unknown fields)'
+    required: false
+    default: 'false'
+
+outputs:
+  summary:
+    description: 'Summary of applied components and result'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+permissions:
+  contents: write
+  pull-requests: write

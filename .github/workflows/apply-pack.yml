@@ -1,0 +1,51 @@
+name: Apply AgentOps Pack
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Target repository (owner/name)'
+        required: true
+      pack_version:
+        description: 'Pack version or ref'
+        required: false
+      pack_components:
+        description: 'Comma-separated components'
+        required: false
+      apply:
+        description: 'Apply (true) or dry-run (false)'
+        required: false
+        default: 'false'
+      override_token:
+        description: 'Optional PAT/App token for cross-repo'
+        required: false
+      permissions_mode:
+        description: "Permission profile: 'default' or 'cross-repo'"
+        required: false
+        default: 'default'
+      strict:
+        description: 'Enable strict validation'
+        required: false
+        default: 'false'
+
+jobs:
+  apply-pack:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Apply AgentOps Pack
+        uses: ./.github/actions/apply-pack
+        with:
+          repo: ${{ inputs.repo }}
+          pack_version: ${{ inputs.pack_version }}
+          pack_components: ${{ inputs.pack_components }}
+          config_path: .github/agentops-pack.yml
+          apply: ${{ inputs.apply }}
+          override_token: ${{ inputs.override_token }}
+          permissions_mode: ${{ inputs.permissions_mode }}
+          strict: ${{ inputs.strict }}

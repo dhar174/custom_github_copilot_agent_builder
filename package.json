@@ -1,0 +1,22 @@
+{
+  "name": "agentops-pack-applier",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/js-yaml": "^4.0.9",
+    "fs-extra": "^11.3.1",
+    "typescript": "^5.6.3",
+    "vitest": "^1.6.0"
+  }
+}
