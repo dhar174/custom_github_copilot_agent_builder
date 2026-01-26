@@ -1,4 +1,3 @@
-````markdown
 # custom_github_copilot_agent_builder
 
 A practical, repo-first framework for designing, organizing, and scaling **custom GitHub Copilot agents**—with consistent guardrails, reusable skills, and tool-enabled autonomy.
@@ -272,9 +271,3 @@ PRs are welcome—especially:
 ## License
 
 Choose what fits your goals (MIT/Apache-2.0 are common for templates).
-
-```
-
-If you want, I can also generate the **actual starter files** (the `.agent.md`, `.prompt.md`, instructions, and repo-profile templates) so this repo is immediately usable as a template.
-::contentReference[oaicite:0]{index=0}
-```
