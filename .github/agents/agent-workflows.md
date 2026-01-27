@@ -219,6 +219,7 @@ flowchart LR
 2. **Architect** → `"Create refactoring plan"` → **Implementation Plan**
 3. **Implementation Plan** → `"Apply clean code principles"` → **Clean Code Agent**
 4. **Clean Code** → `"Update test coverage"` → **Test Writer**
+5. **Test Writer** → `"Review refactored code"` → **Code Review**
 
 ### Completion Definition
 The refactoring workflow is complete when: (1) All planned refactoring tasks are completed, (2) Code quality metrics show measurable improvement, (3) All tests pass with maintained or improved coverage, (4) Code review confirms improved maintainability, (5) Changes are deployed without incidents
