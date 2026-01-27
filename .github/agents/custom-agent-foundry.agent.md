@@ -3,17 +3,7 @@ description: Expert at designing and creating VS Code custom agents with optimal
 name: Custom Agent Foundry
 argument-hint: Describe the agent role, purpose, and required capabilities
 model: Claude Sonnet 4.5
-tools:
-- vscode
-- execute
-- read
-- edit
-- search
-- web
-- agent
-- github/*
-- todo
-infer: true
+tools: ['vscode', 'execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/readNotebookCellOutput', 'read/terminalSelection', 'read/terminalLastCommand', 'read/getTaskOutput', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'io.github.upstash/context7/*', 'microsoft/markitdown/*', 'agent', 'context7/*', 'ms-vscode.vscode-websearchforcopilot/websearch', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_agent_code_gen_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_ai_model_guidance', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_agent_model_code_sample', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_tracing_code_gen_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_get_evaluation_code_gen_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_convert_declarative_agent_to_code', 'ms-windows-ai-studio.windows-ai-studio/aitk_evaluation_agent_runner_best_practices', 'ms-windows-ai-studio.windows-ai-studio/aitk_evaluation_planner', 'todo']
 ---
 
 # Custom Agent Foundry - Expert Agent Designer
