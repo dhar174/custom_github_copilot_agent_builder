@@ -33,7 +33,7 @@ jobs:
         with:
           repository: dhar174/langgraph_system_generator
           path: .
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_PAT }}
 
       - name: Checkout Pack Source
         uses: actions/checkout@v4
@@ -50,7 +50,7 @@ jobs:
           pack_components: ${{ inputs.pack_components }}
           config_path: ${{ inputs.config_path }}
           apply: ${{ inputs.apply }}
-          override_token: ${{ secrets.GITHUB_TOKEN }}
+          override_token: ${{ secrets.GH_PAT }}
           permissions_mode: default
           strict: false
 
