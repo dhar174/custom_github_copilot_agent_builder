@@ -28,14 +28,25 @@ jobs:
   apply-pack-staging:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Target Repo
+        uses: actions/checkout@v4
+        with:
+          repository: dhar174/langgraph_system_generator
+          path: .
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout Pack Source
+        uses: actions/checkout@v4
+        with:
+          path: _pack
 
       - name: Apply AgentOps Pack (staging)
         id: apply
-        uses: ./.github/actions/apply-pack
+        uses: ./_pack/.github/actions/apply-pack
         with:
           repo: dhar174/langgraph_system_generator
           pack_version: ${{ inputs.pack_version }}
+          pack_root: _pack
           pack_components: ${{ inputs.pack_components }}
           config_path: ${{ inputs.config_path }}
           apply: ${{ inputs.apply }}
