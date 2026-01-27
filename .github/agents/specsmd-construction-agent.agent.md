@@ -1,5 +1,13 @@
 ---
-description: Building phase agent - execute bolts through DDD stages (model, test, implement)
+description: Building phase agent - execute bolts through DDD stages (model, test,
+  implement)
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 # Activate Construction Agent

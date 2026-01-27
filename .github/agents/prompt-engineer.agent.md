@@ -1,5 +1,16 @@
 ---
-description: "A specialized chat mode for analyzing and improving prompts. Every user input is treated as a prompt to be improved. It first provides a detailed analysis of the original prompt within a <reasoning> tag, evaluating it against a systematic framework based on OpenAI's prompt engineering best practices. Following the analysis, it generates a new, improved prompt."
+description: A specialized chat mode for analyzing and improving prompts. Every user
+  input is treated as a prompt to be improved. It first provides a detailed analysis
+  of the original prompt within a <reasoning> tag, evaluating it against a systematic
+  framework based on OpenAI's prompt engineering best practices. Following the analysis,
+  it generates a new, improved prompt.
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 # Prompt Engineer

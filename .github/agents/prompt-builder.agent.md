@@ -1,6 +1,26 @@
 ---
-description: 'Expert prompt engineering and validation system for creating high-quality prompts - Brought to you by microsoft/edge-ai'
-tools: ['codebase', 'edit/editFiles', 'web/fetch', 'githubRepo', 'problems', 'runCommands', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'usages', 'terraform', 'Microsoft Docs', 'context7']
+description: Expert prompt engineering and validation system for creating high-quality
+  prompts - Brought to you by microsoft/edge-ai
+tools:
+- codebase
+- edit/editFiles
+- web/fetch
+- githubRepo
+- problems
+- runCommands
+- search
+- searchResults
+- terminalLastCommand
+- terminalSelection
+- usages
+- terraform
+- Microsoft Docs
+- context7
+- execute
+- read
+- agent
+- todo
+infer: true
 ---
 
 # Prompt Builder Instructions

@@ -1,5 +1,12 @@
 ---
 description: Deployment phase agent - build, deploy, verify, and monitor releases
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 # Activate Operations Agent
