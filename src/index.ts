@@ -8,6 +8,7 @@ import { validateSelection, PackManifest } from './pack/manifest';
 import { loadPackSource } from './pack/source';
 import { buildPrBody } from './pr/summary';
 import { upsertPr } from './pr/update';
+import { createSnapshot } from './sense/snapshot';
 
 const DEFAULTS: Record<string, unknown> = {
   components: [],
@@ -107,6 +108,13 @@ async function run(): Promise<void> {
       core.setFailed(`Config validation failed: ${message}`);
       return;
     }
+
+    // --- Phase 1: Sense ---
+    core.info('--- Phase 1: Sensing Repository ---');
+    // We assume CWD is the target repo roots
+    const snapshot = await createSnapshot(process.cwd(), mergeResult.config.repo, 'main'); 
+    core.info(`Detected signals: ${JSON.stringify(snapshot.signals, null, 2)}`);
+    core.info(`Existing AI Config: ${JSON.stringify(snapshot.aiConfig, null, 2)}`);
 
     mergeResult.warnings.forEach((w) => {
       core.warning(`Warning (${w.code}): ${w.field}`);

@@ -44,6 +44,7 @@ const manifest_1 = require("./pack/manifest");
 const source_1 = require("./pack/source");
 const summary_1 = require("./pr/summary");
 const update_1 = require("./pr/update");
+const snapshot_1 = require("./sense/snapshot");
 const DEFAULTS = {
     components: [],
     apply: false,
@@ -126,6 +127,12 @@ async function run() {
             core.setFailed(`Config validation failed: ${message}`);
             return;
         }
+        // --- Phase 1: Sense ---
+        core.info('--- Phase 1: Sensing Repository ---');
+        // We assume CWD is the target repo roots
+        const snapshot = await (0, snapshot_1.createSnapshot)(process.cwd(), mergeResult.config.repo, 'main');
+        core.info(`Detected signals: ${JSON.stringify(snapshot.signals, null, 2)}`);
+        core.info(`Existing AI Config: ${JSON.stringify(snapshot.aiConfig, null, 2)}`);
         mergeResult.warnings.forEach((w) => {
             core.warning(`Warning (${w.code}): ${w.field}`);
         });
