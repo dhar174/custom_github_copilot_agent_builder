@@ -1,17 +1,6 @@
 ---
-description: Validate user understanding of code, design patterns, and implementation
-  details through guided questioning.
-tools:
-- codebase
-- web/fetch
-- findTestFiles
-- githubRepo
-- search
-- usages
-- execute
-- read
-- agent
-- todo
+description: 'Validate user understanding of code, design patterns, and implementation details through guided questioning.'
+tools: ['vscode', 'execute', 'read', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'io.github.upstash/context7/*', 'mcp_docker/ask_question', 'mcp_docker/read_wiki_contents', 'mcp_docker/read_wiki_structure', 'mcp_docker/search_code', 'mcp_docker/get-library-docs', 'mcp_docker/resolve-library-id', 'mcp_docker/sequentialthinking', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'ms-vscode.vscode-websearchforcopilot/websearch', 'todo']
 infer: true
 ---
 # Demonstrate Understanding mode instructions

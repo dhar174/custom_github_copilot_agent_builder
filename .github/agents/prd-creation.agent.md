@@ -1,23 +1,6 @@
 ---
-description: Create comprehensive Product Requirements Documents (PRDs) by transforming
-  feature ideas into detailed specifications.
-tools:
-- codebase
-- editFiles
-- fetch
-- findTestFiles
-- list_issues
-- githubRepo
-- search
-- add_issue_comment
-- create_issue
-- update_issue
-- get_issue
-- search_issues
-- execute
-- read
-- agent
-- todo
+description: Create comprehensive Product Requirements Documents (PRDs) by transforming feature ideas into detailed specifications.
+tools: ['vscode', 'execute', 'read', 'edit/createDirectory', 'edit/editFiles', 'search', 'web', 'github/add_issue_comment', 'github/list_issues', 'github/search_issues', 'azure-mcp/search', 'github/add_issue_comment', 'github/list_issues', 'github/search_issues', 'io.github.upstash/context7/*', 'mcp_docker/add_issue_comment', 'mcp_docker/list_issues', 'mcp_docker/search_issues', 'mcp_docker/fetch', 'mcp_docker/resolve-library-id', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'todo']
 infer: true
 ---
 

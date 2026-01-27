@@ -16,7 +16,7 @@ structure:
 
 # Project configuration file (created during project-init)
 project_config:
-  path: "memory-bank/project.yaml"
+  path: ".specsmd/aidlc/memory-bank/project.yaml"
   description: "Project type and initialization metadata"
   fields:
     - project_type: "full-stack-web | backend-api | frontend-app | cli-tool | library"
@@ -33,7 +33,7 @@ conventions:
     format: "ISO 8601 with time and timezone"
     pattern: "YYYY-MM-DDTHH:MM:SSZ"
     example: "2024-12-05T10:30:00Z"
-    note: "ALL timestamps in memory-bank artifacts MUST include time, not just date"
+    note: "ALL timestamps in .specsmd/aidlc/memory-bank artifacts MUST include time, not just date"
     applies_to:
       - "created, started, completed fields in bolt files"
       - "stages_completed entries"
@@ -58,7 +58,7 @@ naming:
     format: "{SSS}-{title-slug}.md"
     example: "001-user-signup.md"
     note: "3-digit story number + kebab-case story title"
-    full_path_example: "memory-bank/intents/001-user-authentication/units/001-auth-service/stories/001-user-signup.md"
+    full_path_example: ".specsmd/aidlc/memory-bank/intents/001-user-authentication/units/001-auth-service/stories/001-user-signup.md"
 
   bolts:
     format: "{BBB}-{unit-name}/"
@@ -72,16 +72,16 @@ naming:
 
 # Schema Definition (Source of Truth for Agents)
 schema:
-  intents: "memory-bank/intents/{intent-name}/"
-  units: "memory-bank/intents/{intent-name}/units/{unit-name}/"
-  stories: "memory-bank/intents/{intent-name}/units/{unit-name}/stories/"
-  bolts: "memory-bank/bolts/{bolt-id}/"
-  bolt-artifacts: "memory-bank/bolts/{bolt-id}/"
-  standards: "memory-bank/standards/"
-  story-index: "memory-bank/story-index.md"
-  inception-log: "memory-bank/intents/{intent-name}/inception-log.md"
-  construction-log: "memory-bank/intents/{intent-name}/units/{unit-name}/construction-log.md"
-  decision-index: "memory-bank/standards/decision-index.md"
+  intents: ".specsmd/aidlc/memory-bank/intents/{intent-name}/"
+  units: ".specsmd/aidlc/memory-bank/intents/{intent-name}/units/{unit-name}/"
+  stories: ".specsmd/aidlc/memory-bank/intents/{intent-name}/units/{unit-name}/stories/"
+  bolts: ".specsmd/aidlc/memory-bank/bolts/{bolt-id}/"
+  bolt-artifacts: ".specsmd/aidlc/memory-bank/bolts/{bolt-id}/"
+  standards: ".specsmd/aidlc/memory-bank/standards/"
+  story-index: ".specsmd/aidlc/memory-bank/story-index.md"
+  inception-log: ".specsmd/aidlc/memory-bank/intents/{intent-name}/inception-log.md"
+  construction-log: ".specsmd/aidlc/memory-bank/intents/{intent-name}/units/{unit-name}/construction-log.md"
+  decision-index: ".specsmd/aidlc/memory-bank/standards/decision-index.md"
 
   # Agent Ownership
   # Note: Both Inception and Construction can plan/create bolts
@@ -96,10 +96,10 @@ schema:
 story-index:
   enabled: true
   # Options:
-  #   1. single-file: One story-index.md at memory-bank root (recommended for small projects)
+  #   1. single-file: One story-index.md at .specsmd/aidlc/memory-bank root (recommended for small projects)
   #   2. per-intent: One story-index.md per intent folder (recommended for large projects)
   #   3. aggregate: Auto-generated from unit-level stories (computed, not stored)
   mode: "single-file"
-  path: "memory-bank/story-index.md"
+  path: ".specsmd/aidlc/memory-bank/story-index.md"
 
 
