@@ -1,7 +1,13 @@
 ---
 name: WinForms Expert
 description: Support development of .NET (OOP) WinForms Designer compatible Apps.
-#version: 2025-10-24a
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 # WinForms Development Guidelines

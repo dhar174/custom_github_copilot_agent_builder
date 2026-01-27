@@ -1,5 +1,5 @@
 ---
-description: 'Expert at designing and creating VS Code custom agents with optimal configurations'
+description: Expert at designing and creating VS Code custom agents with optimal configurations
 name: Custom Agent Foundry
 argument-hint: Describe the agent role, purpose, and required capabilities
 model: Claude Sonnet 4.5

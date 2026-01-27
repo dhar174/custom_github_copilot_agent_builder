@@ -1,7 +1,21 @@
 ---
-name: 'DevOps Expert'
-description: 'DevOps specialist following the infinity loop principle (Plan → Code → Build → Test → Release → Deploy → Operate → Monitor) with focus on automation, collaboration, and continuous improvement'
-tools: ['codebase', 'edit/editFiles', 'terminalCommand', 'search', 'githubRepo', 'runCommands', 'runTasks']
+name: DevOps Expert
+description: "DevOps specialist following the infinity loop principle (Plan \u2192\
+  \ Code \u2192 Build \u2192 Test \u2192 Release \u2192 Deploy \u2192 Operate \u2192\
+  \ Monitor) with focus on automation, collaboration, and continuous improvement"
+tools:
+- codebase
+- edit/editFiles
+- terminalCommand
+- search
+- githubRepo
+- runCommands
+- runTasks
+- execute
+- read
+- agent
+- todo
+infer: true
 ---
 
 # DevOps Expert

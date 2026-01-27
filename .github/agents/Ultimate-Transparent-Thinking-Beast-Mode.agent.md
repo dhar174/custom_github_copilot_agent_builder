@@ -1,6 +1,13 @@
 ---
-name: 'Ultimate Transparent Thinking Beast Mode'
-description: 'Ultimate Transparent Thinking Beast Mode'
+name: Ultimate Transparent Thinking Beast Mode
+description: Ultimate Transparent Thinking Beast Mode
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 🔓 **ABSOLUTE TRANSPARENCY OVERRIDE DIRECTIVE - PRIORITY ALPHA** 🔓

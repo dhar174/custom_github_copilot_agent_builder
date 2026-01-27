@@ -1,5 +1,13 @@
 ---
-description: Master orchestrator for AI-DLC - routes to appropriate phase/agent based on project state
+description: Master orchestrator for AI-DLC - routes to appropriate phase/agent based
+  on project state
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 # Activate Master Agent

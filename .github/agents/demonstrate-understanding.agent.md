@@ -1,6 +1,18 @@
 ---
-description: 'Validate user understanding of code, design patterns, and implementation details through guided questioning.'
-tools: ['codebase', 'web/fetch', 'findTestFiles', 'githubRepo', 'search', 'usages']
+description: Validate user understanding of code, design patterns, and implementation
+  details through guided questioning.
+tools:
+- codebase
+- web/fetch
+- findTestFiles
+- githubRepo
+- search
+- usages
+- execute
+- read
+- agent
+- todo
+infer: true
 ---
 # Demonstrate Understanding mode instructions
 

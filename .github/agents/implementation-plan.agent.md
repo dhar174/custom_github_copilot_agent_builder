@@ -1,7 +1,42 @@
 ---
-description: "Generate an implementation plan for new features or refactoring existing code."
-name: "Implementation Plan Generation Mode"
-tools: ["search/codebase", "search/usages", "vscode/vscodeAPI", "think", "read/problems", "search/changes", "execute/testFailure", "read/terminalSelection", "read/terminalLastCommand", "vscode/openSimpleBrowser", "web/fetch", "findTestFiles", "search/searchResults", "web/githubRepo", "vscode/extensions", "edit/editFiles", "execute/runNotebookCell", "read/getNotebookSummary", "read/readNotebookCellOutput", "search", "vscode/getProjectSetupInfo", "vscode/installExtension", "vscode/newWorkspace", "vscode/runCommand", "execute/getTerminalOutput", "execute/runInTerminal", "execute/createAndRunTask", "execute/getTaskOutput", "execute/runTask"]
+description: Generate an implementation plan for new features or refactoring existing
+  code.
+name: Implementation Plan Generation Mode
+tools:
+- search/codebase
+- search/usages
+- vscode/vscodeAPI
+- think
+- read/problems
+- search/changes
+- execute/testFailure
+- read/terminalSelection
+- read/terminalLastCommand
+- vscode/openSimpleBrowser
+- web/fetch
+- findTestFiles
+- search/searchResults
+- web/githubRepo
+- vscode/extensions
+- edit/editFiles
+- execute/runNotebookCell
+- read/getNotebookSummary
+- read/readNotebookCellOutput
+- search
+- vscode/getProjectSetupInfo
+- vscode/installExtension
+- vscode/newWorkspace
+- vscode/runCommand
+- execute/getTerminalOutput
+- execute/runInTerminal
+- execute/createAndRunTask
+- execute/getTaskOutput
+- execute/runTask
+- execute
+- read
+- agent
+- todo
+infer: true
 ---
 
 # Implementation Plan Generation Mode

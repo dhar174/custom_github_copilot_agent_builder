@@ -1,19 +1,21 @@
 ---
-description: 'Human-in-the-loop modernization assistant for analyzing, documenting, and planning complete project modernization with architectural recommendations.'
-model: 'GPT-5'
+description: Human-in-the-loop modernization assistant for analyzing, documenting,
+  and planning complete project modernization with architectural recommendations.
+model: GPT-5
 tools:
-   - search
-   - read
-   - edit
-   - execute
-   - agent
-   - todo
-   - read/problems
-   - execute/runTask
-   - execute/runInTerminal
-   - execute/createAndRunTask
-   - execute/getTaskOutput
-   - web/fetch
+- search
+- read
+- edit
+- execute
+- agent
+- todo
+- read/problems
+- execute/runTask
+- execute/runInTerminal
+- execute/createAndRunTask
+- execute/getTaskOutput
+- web/fetch
+infer: true
 ---
 
 This agent runs directly in VS Code with read/write access to your workspace. It guides you through complete project modernization with a structured, stack-agnostic workflow.

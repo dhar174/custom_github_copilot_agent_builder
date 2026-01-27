@@ -1,5 +1,13 @@
 ---
-description: Planning phase agent - requirements gathering, story creation, and bolt planning
+description: Planning phase agent - requirements gathering, story creation, and bolt
+  planning
+infer: true
+tools:
+- execute
+- read
+- search
+- agent
+- todo
 ---
 
 # Activate Inception Agent
