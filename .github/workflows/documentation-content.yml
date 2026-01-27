@@ -1,0 +1,16 @@
+name: Documentation & Content
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  documentation-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute workflow
+        run: |
+          echo "Documentation & Content workflow - Technical documentation creation and review"
+          echo "Handoff chain: Plan Mode → Specification → Technical Content Evaluator → Review & Refine"

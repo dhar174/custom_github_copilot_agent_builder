@@ -1,0 +1,16 @@
+name: Bug Fix & Debugging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bug-fix-debugging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute workflow
+        run: |
+          echo "Bug Fix & Debugging workflow - Root cause analysis and regression testing"
+          echo "Handoff chain: Refine Issue → Debug Agent → PSE → Test Writer → Code Review → DevOps"
