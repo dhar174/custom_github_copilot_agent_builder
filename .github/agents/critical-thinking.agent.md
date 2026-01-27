@@ -1,20 +1,6 @@
 ---
-description: Challenge assumptions and encourage critical thinking to ensure the best
-  possible solution and outcomes.
-tools:
-- codebase
-- extensions
-- web/fetch
-- findTestFiles
-- githubRepo
-- problems
-- search
-- searchResults
-- usages
-- execute
-- read
-- agent
-- todo
+description: Challenge assumptions and encourage critical thinking to ensure the best possible solution and outcomes.
+tools: ['vscode', 'execute', 'read', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'io.github.upstash/context7/*', 'mcp_docker/ask_question', 'mcp_docker/read_wiki_contents', 'mcp_docker/read_wiki_structure', 'mcp_docker/search_code', 'mcp_docker/get-library-docs', 'mcp_docker/resolve-library-id', 'mcp_docker/sequentialthinking', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'ms-vscode.vscode-websearchforcopilot/websearch', 'todo']
 infer: true
 ---
 # Critical thinking mode instructions

@@ -1,39 +1,6 @@
 ---
-description: Perform janitorial tasks on any codebase including cleanup, simplification,
-  and tech debt remediation.
-tools:
-- search/changes
-- search/codebase
-- edit/editFiles
-- vscode/extensions
-- web/fetch
-- findTestFiles
-- web/githubRepo
-- vscode/getProjectSetupInfo
-- vscode/installExtension
-- vscode/newWorkspace
-- vscode/runCommand
-- vscode/openSimpleBrowser
-- read/problems
-- execute/getTerminalOutput
-- execute/runInTerminal
-- read/terminalLastCommand
-- read/terminalSelection
-- execute/createAndRunTask
-- execute/getTaskOutput
-- execute/runTask
-- execute/runTests
-- search
-- search/searchResults
-- execute/testFailure
-- search/usages
-- vscode/vscodeAPI
-- microsoft.docs.mcp
-- github
-- execute
-- read
-- agent
-- todo
+description: Perform janitorial tasks on any codebase including cleanup, simplification, and tech debt remediation.
+tools: ['vscode', 'execute', 'read', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'github/*', 'azure-mcp/search', 'mcp_docker/update_pull_request_branch', 'mcp_docker/get-library-docs', 'agent', 'context7/*', 'github.vscode-pull-request-github/copilotCodingAgent', 'github.vscode-pull-request-github/issue_fetch', 'github.vscode-pull-request-github/suggest-fix', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'github.vscode-pull-request-github/renderIssues', 'github.vscode-pull-request-github/activePullRequest', 'github.vscode-pull-request-github/openPullRequest', 'todo']
 infer: true
 ---
 # Universal Janitor
