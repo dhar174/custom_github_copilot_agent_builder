@@ -1,6 +1,5 @@
 ---
-description: Meta agentic project creation assistant to help users create and manage
-  project workflows effectively.
+description: Meta agentic project creation assistant to help users create and manage project workflows effectively.
 name: Meta Agentic Project Scaffold
 tools:
 - vscode
