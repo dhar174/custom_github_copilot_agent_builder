@@ -3,7 +3,7 @@ intent: 001-agentops-pack-applier
 phase: inception
 status: complete
 created: 2026-01-26T00:00:00Z
-updated: 2026-01-26T00:00:00Z
+updated: 2026-01-26T18:45:00Z
 ---
 
 # Requirements: AgentOps Pack Applier

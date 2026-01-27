@@ -2,9 +2,9 @@
 unit: 003-pr-governance-and-reporting
 intent: 001-agentops-pack-applier
 phase: inception
-status: draft
+status: complete
 created: 2026-01-26T00:00:00Z
-updated: 2026-01-26T00:00:00Z
+updated: 2026-01-26T18:40:00Z
 ---
 
 # Unit Brief: pr-governance-and-reporting

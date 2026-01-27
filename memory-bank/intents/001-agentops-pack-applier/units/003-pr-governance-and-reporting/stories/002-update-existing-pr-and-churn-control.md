@@ -2,11 +2,11 @@
 id: 002-update-existing-pr-and-churn-control
 unit: 003-pr-governance-and-reporting
 intent: 001-agentops-pack-applier
-status: draft
+status: complete
 priority: should
 created: 2026-01-26T00:00:00Z
-assigned_bolt: null
-implemented: false
+assigned_bolt: bolt-pr-governance-and-reporting-1
+implemented: true
 ---
 
 # Story: 002-update-existing-pr-and-churn-control

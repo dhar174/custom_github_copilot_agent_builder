@@ -35,11 +35,11 @@ inputs:
 outputs:
   summary:
     description: 'Summary of applied components and result'
+  pr_number:
+    description: 'The number of the created or updated Pull Request'
+  pr_url:
+    description: 'The URL of the created or updated Pull Request'
 
 runs:
   using: 'node20'
   main: 'dist/index.js'
-
-permissions:
-  contents: write
-  pull-requests: write
