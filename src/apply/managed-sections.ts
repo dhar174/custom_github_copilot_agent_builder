@@ -12,7 +12,7 @@ function normalizeLineEndings(content: string): string {
 
 export function renderManagedFile(sections: ManagedSection[]): string {
   const ordered = [...sections].sort((a, b) => a.id.localeCompare(b.id));
-  return ordered.map((section) => buildBlock(section.id, section.content.trimEnd())).join('\n\n');
+  return ordered.map((section) => buildBlock(section.id, section.content.trimEnd())).join('\n\n') + '\n';
 }
 
 export function applyManagedSections(
