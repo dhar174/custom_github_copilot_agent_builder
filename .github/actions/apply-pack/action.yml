@@ -9,6 +9,10 @@ inputs:
   pack_version:
     description: 'Pack version or ref to apply'
     required: false
+  pack_root:
+    description: 'Root directory of the pack source'
+    required: false
+    default: '.'
   pack_components:
     description: 'Comma-separated list of pack components to apply'
     required: false
