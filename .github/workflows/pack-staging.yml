@@ -1,0 +1,74 @@
+name: AgentOps Pack (Staging)
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Apply changes?'
+        type: boolean
+        default: true
+      pack_version:
+        description: 'Pack version/ref'
+        type: string
+        default: '0.1.0'
+      pack_components:
+        description: 'Comma-separated components (blank = all)'
+        type: string
+        default: ''
+      config_path:
+        description: 'Config path'
+        type: string
+        default: '.github/agentops-pack.yml'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  apply-pack-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply AgentOps Pack (staging)
+        id: apply
+        uses: ./.github/actions/apply-pack
+        with:
+          repo: dhar174/langgraph_system_generator
+          pack_version: ${{ inputs.pack_version }}
+          pack_components: ${{ inputs.pack_components }}
+          config_path: ${{ inputs.config_path }}
+          apply: ${{ inputs.apply }}
+          override_token: ${{ secrets.GITHUB_TOKEN }}
+          permissions_mode: default
+          strict: false
+
+      - name: Show outputs
+        run: |
+          echo "PR #: ${{ steps.apply.outputs.pr_number }}"
+          echo "PR URL: ${{ steps.apply.outputs.pr_url }}"
+        shell: bash
+        if: always()
+
+      - name: Notify on failure (webhook)
+        if: failure()
+        env:
+          WEBHOOK: ${{ secrets.MONITORING_WEBHOOK }}
+        run: |
+          if [ -z "$WEBHOOK" ]; then
+            echo "MONITORING_WEBHOOK not set; skipping notification" >&2
+            exit 0
+          fi
+          
+          # Use jq to safely construct JSON payload
+          jq -n \
+            --arg text "AgentOps Pack staging run failed" \
+            --arg repo "${{ github.repository }}" \
+            --arg run_id "${{ github.run_id }}" \
+            --arg pack_version "${{ inputs.pack_version }}" \
+            --arg apply "${{ inputs.apply }}" \
+            --arg pr_number "${{ steps.apply.outputs.pr_number }}" \
+            --arg pr_url "${{ steps.apply.outputs.pr_url }}" \
+            '{text: $text, repo: $repo, run_id: $run_id, pack_version: $pack_version, apply: $apply, pr_number: $pr_number, pr_url: $pr_url}' > payload.json
+            
+          curl -X POST -H "Content-Type: application/json" -d @payload.json "$WEBHOOK"
