@@ -1,8 +1,9 @@
 ---
 unit: 001-agentops-pack-applier
-env: staging
-status: planned
+env: prod
+status: active
 created: 2026-01-26T19:05:00Z
+updated: 2026-01-27T02:00:00Z
 ---
 
 # Monitoring Plan — AgentOps Pack Applier
