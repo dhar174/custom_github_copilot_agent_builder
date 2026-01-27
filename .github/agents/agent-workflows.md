@@ -326,6 +326,9 @@ flowchart LR
 1. **PRD Creator** → `"Design system architecture"` → **Architect**
 2. **Architect** → `"Create technical specification"` → **Specification**
 3. **Specification** → `"Setup DevOps infrastructure"` → **DevOps Expert**
+4. **DevOps Expert** → `"Initial implementation"` → **Principal Software Engineer**
+5. **PSE** → `"Create initial tests"` → **Test Writer**
+6. **Test Writer** → `"Configure CI/CD"` → **GitHub Actions Expert**
 
 ### Completion Definition
 The new project setup workflow is complete when: (1) Repository is created with standard structure, (2) CI/CD pipelines are functional and passing, (3) All environments are provisioned and accessible, (4) Documentation includes setup instructions and architecture diagrams, (5) Team can successfully onboard and contribute
