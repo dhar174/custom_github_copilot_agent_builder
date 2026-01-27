@@ -125,7 +125,7 @@ The feature development workflow is complete when: (1) Code is deployed to produ
 3. Review architecture decisions for scalability, maintainability, and alignment with system standards
 4. Validate implementation plan covers all specification requirements with realistic estimates
 5. Execute all automated tests and confirm 80%+ code coverage
-6. Run security scanner and address all critical/high severity findings
+6. Run security scanner and verify that there are zero critical findings
 7. Perform smoke tests in staging environment before production deployment
 8. Verify monitoring alerts and dashboards are configured and functional
 
