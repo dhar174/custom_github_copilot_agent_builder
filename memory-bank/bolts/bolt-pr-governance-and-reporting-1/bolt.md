@@ -9,10 +9,19 @@ stories:
   - 002-update-existing-pr-and-churn-control
   - 003-no-timestamps-and-stable-ordering
 created: 2026-01-26T00:00:00Z
-started: 2026-01-26T17:30:00Z
-completed: 2026-01-26T18:35:00Z
-current_stage: 3-test
-stages_completed: []
+started: 2026-01-27T01:40:00Z
+completed: 2026-01-27T02:15:00Z
+current_stage: test
+stages_completed:
+  - name: plan
+    completed: 2026-01-27T01:45:00Z
+    artifact: implementation-plan.md
+  - name: implement
+    completed: 2026-01-27T02:00:00Z
+    artifact: implementation-walkthrough.md
+  - name: test
+    completed: 2026-01-27T02:15:00Z
+    artifact: test-walkthrough.md
 requires_bolts:
   - bolt-pack-apply-engine-1
 enables_bolts: []
@@ -48,9 +57,9 @@ Deliver deterministic PR surfaces that reviewers trust, with minimal noise on re
 
 ## Stages
 
-- [ ] **1. plan**: Pending → PR template and churn controls
-- [ ] **2. implement**: Pending → PR update logic, stability guards
-- [ ] **3. test**: Pending → churn/noise tests, rate-limit handling
+- ✅ **1. plan**: Complete → PR template and churn controls
+- ✅ **2. implement**: Complete → PR update logic, stability guards
+- ✅ **3. test**: Complete → churn/noise tests, rate-limit handling
 
 ## Dependencies
 

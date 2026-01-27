@@ -1,10 +1,18 @@
 import { ApplyResult, ApplyChange } from '../apply/types';
 import { PackManifest } from '../pack/manifest';
+import { sortFileList } from './stability';
+
+export interface PrBodyContext {
+  runId: number | string;
+  repo: string;
+  questions?: string[];
+  signals?: Record<string, string>;
+}
 
 export function buildPrBody(
   result: ApplyResult,
   manifest: PackManifest,
-  context: { runId: number | string; repo: string }
+  context: PrBodyContext
 ): string {
   const header = `## AgentOps Pack: ${manifest.name} v${manifest.version}`;
   
@@ -18,18 +26,34 @@ export function buildPrBody(
 - **Warnings**: ${result.warnings.length}
 `;
 
+  // Signals section (FR-10.2)
+  let signalsSection = '';
+  if (context.signals && Object.keys(context.signals).length > 0) {
+    const items = Object.entries(context.signals)
+      .map(([k, v]) => `- **${k}**: ${v}`)
+      .join('\n');
+    signalsSection = `### Detected Signals\n${items}\n`;
+  }
+
+  // Questions section (FR-10.2 / FR-7.7)
+  let questionsSection = '';
+  if (context.questions && context.questions.length > 0) {
+    const items = context.questions.map(q => `- [ ] ${q}`).join('\n');
+    questionsSection = `### Questions & Assumptions\nPlease review the following assumptions made during generating:\n${items}\n`;
+  }
+
   const files = result.changes.filter(f => f.status !== 'skipped' && f.status !== 'unchanged');
   
-  // Sort files for stability
-  files.sort((a, b) => a.path.localeCompare(b.path));
+  // Sort files for stability (NFR-3 / FR-10.2 stable ordering)
+  const sortedFiles = sortFileList(files);
 
   const maxFiles = 50;
   let fileList = '_No file changes_';
   
-  if (files.length > 0) {
-      const items = files.slice(0, maxFiles).map(f => `- [${f.status.toUpperCase()}] ${f.path}`);
-      if (files.length > maxFiles) {
-          items.push(`... and ${files.length - maxFiles} more`);
+  if (sortedFiles.length > 0) {
+      const items = sortedFiles.slice(0, maxFiles).map(f => `- [${f.status.toUpperCase()}] \`${f.path}\``);
+      if (sortedFiles.length > maxFiles) {
+          items.push(`... and ${sortedFiles.length - maxFiles} more`);
       }
       fileList = `### Files Changed\n${items.join('\n')}`;
   }
@@ -38,11 +62,20 @@ export function buildPrBody(
     ? `### Warnings\n${result.warnings.map(w => `- ${w}`).join('\n')}\n`
     : '';
 
+  // MCP Governance Note (FR-11.2)
+  const mcpNote = `
+### MCP Governance
+This update follows the organization's MCP policy. Review \`docs/agentops/mcp.md\` for approved servers and trust tiers.
+`;
+
+  // Checklist (FR-10.2 / NFR-3)
   const checklist = `
 ### Review Checklist
 - [ ] **Schema Check**: Verified config matches expectations
 - [ ] **Lint**: Generated code passes linting
 - [ ] **Manual Review**: Checked managed sections for correctness
+- [ ] **Idempotence**: CONFIRM that re-running this workflow produces zero diffs
+- [ ] **Secrets**: Verified no secrets are exposed in generated files
 `;
 
   const footer = `
@@ -51,5 +84,16 @@ export function buildPrBody(
 Run ID: ${context.runId}
 `;
 
-  return [header, stats, fileList, warningsSection, checklist, footer].join('\n');
+  // Assemble sections
+  return [
+    header, 
+    stats, 
+    signalsSection,
+    questionsSection,
+    fileList, 
+    warningsSection, 
+    mcpNote,
+    checklist, 
+    footer
+  ].filter(s => s.trim().length > 0).join('\n');
 }

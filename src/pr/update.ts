@@ -2,28 +2,39 @@ import * as github from '@actions/github';
 import * as exec from '@actions/exec';
 import { PrOptions, PrResult, PrContext } from './types';
 
-export async function upsertPr(context: PrContext, options: PrOptions): Promise<PrResult> {
+export interface PrUpdateConfig extends PrOptions {
+    forcePush?: boolean;
+}
+
+export async function upsertPr(context: PrContext, options: PrUpdateConfig): Promise<PrResult> {
   const octokit = github.getOctokit(context.token);
   
   // 1. Configure and Push Git Branch
   await setupGitUser();
-  const branchUpdated = await pushBranch(options.branch, options.commitMessage, context);
+  const branchUpdated = await pushBranch(options.branch, options.commitMessage, context, options.forcePush ?? true);
 
   // 2. Find existing PR
-  const { data: pullRequests } = await octokit.rest.pulls.list({
-    owner: context.owner,
-    repo: context.repo,
-    head: `${context.owner}:${options.branch}`,
-    state: 'open',
-  });
+  let pullRequests;
+  try {
+      const resp = await octokit.rest.pulls.list({
+        owner: context.owner,
+        repo: context.repo,
+        head: `${context.owner}:${options.branch}`,
+        state: 'open',
+      });
+      pullRequests = resp.data;
+  } catch (e: any) {
+      // If 404/auth error, we might not be able to list PRs.
+      throw new Error(`Failed to list PRs: ${e.message}`);
+  }
 
-  const existingPr = pullRequests[0];
+  const existingPr = pullRequests && pullRequests.length > 0 ? pullRequests[0] : undefined;
   const base = options.base || 'main';
 
   if (existingPr) {
     let updated = false;
-    // Update body if changed
-    if (existingPr.body?.trim() !== options.body.trim()) {
+    // Update body/title if changed
+    if ((existingPr.body?.trim() !== options.body.trim()) || (existingPr.title !== options.title)) {
          await octokit.rest.pulls.update({
             owner: context.owner,
             repo: context.repo,
@@ -34,13 +45,14 @@ export async function upsertPr(context: PrContext, options: PrOptions): Promise<
         updated = true;
     }
     
+    // If the branch content changed, the PR is implicitly updated
     if (branchUpdated) {
         updated = true;
     }
 
     return { prNumber: existingPr.number, url: existingPr.html_url, created: false, updated };
   } else {
-    // If we didn't update the branch (no changes) and no PR exists, then we have nothing to create PR for
+    // If we didn't update the branch (no changes) and no existing PR, then we have nothing to create PR for
     if (!branchUpdated) {
         console.log('No changes and no existing PR, skipping PR creation');
         return { prNumber: 0, url: '', created: false, updated: false };
@@ -69,24 +81,29 @@ async function setupGitUser() {
 }
 
 // Returns true if branch was updated/pushed
-async function pushBranch(branch: string, message: string, context: PrContext): Promise<boolean> {
+async function pushBranch(branch: string, message: string, context: PrContext, force: boolean): Promise<boolean> {
     const remoteUrl = `https://x-access-token:${context.token}@github.com/${context.owner}/${context.repo}.git`;
     
-    // We ignore error here in case standard setup already did it, but setting it ensures we use our token.
-    // However, set-url might fail if origin doesn't exist? Standard actions setup usually has origin.
     try {
+        // Just in case origin doesn't exist or is different
         await exec.exec('git', ['remote', 'set-url', 'origin', remoteUrl]);
     } catch (e) {
         console.warn('Failed to set remote URL, attempting to continue', e);
     }
 
+    // Checkout new orphan branch or reset existing?
+    // Using -B resets the branch pointer to HEAD
     await exec.exec('git', ['checkout', '-B', branch]);
     await exec.exec('git', ['add', '.']);
     
     const statusOutput = await exec.getExecOutput('git', ['status', '--porcelain']);
     if (statusOutput.stdout.trim().length > 0) {
         await exec.exec('git', ['commit', '-m', message]);
-        await exec.exec('git', ['push', '-f', 'origin', branch]);
+        const args = ['push', 'origin', branch];
+        if (force) {
+            args.push('--force');
+        }
+        await exec.exec('git', args);
         return true;
     } else {
         console.log('No file changes to commit');
