@@ -35,6 +35,9 @@ inputs:
     description: 'Enable strict validation (fail on unknown fields)'
     required: false
     default: 'false'
+  llm_token:
+    description: 'Token for the Planner Agent (GitHub Models or OpenAI)'
+    required: false
 
 outputs:
   summary:
