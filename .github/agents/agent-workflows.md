@@ -168,7 +168,8 @@ flowchart TD
 1. **Refine Issue** → `"Debug this issue"` → **Debug Agent**
 2. **Debug** → `"Implement fix"` → **Principal Software Engineer**
 3. **PSE** → `"Add regression tests"` → **Test Writer**
-4. **Test Writer** → `"Deploy fix"` → **DevOps Expert**
+4a. **Test Writer** → `"Review code"` → **Code Review**
+4b. **Code Review** → `"Deploy fix"` → **DevOps Expert**
 
 ### Completion Definition
 The bug fix workflow is complete when: (1) Root cause is documented, (2) Fix is implemented and code reviewed, (3) Regression tests pass in all environments, (4) Fix is deployed and verified in production, (5) Issue is updated with resolution details and closed
