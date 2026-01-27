@@ -39,7 +39,7 @@ function parseBoolean(input: string | undefined, fallback: boolean): boolean {
 }
 
 function parseComponents(input: string | undefined): string[] {
-  if (!input) return [];
+  if (!input) return PACK_MANIFEST.components.map((c) => c.name);
   return input
     .split(',')
     .map((s) => s.trim())

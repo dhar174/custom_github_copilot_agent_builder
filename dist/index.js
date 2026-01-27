@@ -73,7 +73,7 @@ function parseBoolean(input, fallback) {
 }
 function parseComponents(input) {
     if (!input)
-        return [];
+        return PACK_MANIFEST.components.map((c) => c.name);
     return input
         .split(',')
         .map((s) => s.trim())
