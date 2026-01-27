@@ -1,33 +1,21 @@
----
+---yaml
 description: Provide principal-level software engineering guidance with focus on engineering
   excellence, technical leadership, and pragmatic implementation.
-tools:
-- changes
-- search/codebase
-- edit/editFiles
-- extensions
-- web/fetch
-- findTestFiles
-- githubRepo
-- new
-- openSimpleBrowser
-- problems
-- runCommands
-- runTasks
-- runTests
-- search
-- search/searchResults
-- runCommands/terminalLastCommand
-- runCommands/terminalSelection
-- testFailure
-- usages
-- vscodeAPI
-- github
-- execute
-- read
-- agent
-- todo
 infer: true
+tools: ['search/changes', 'search/codebase', 'edit/editFiles', 'web/fetch', 'web/githubRepo', 'search', 'search/usages', 'read/problems', 'execute/runInTerminal', 'execute/runTask', 'execute/runTests', 'execute/testFailure', 'read/terminalLastCommand', 'read/terminalSelection', 'github/*']
+handoffs:
+  - label: "🧪 Add Test Coverage"
+    agent: test-writer
+    prompt: "Create comprehensive tests for the implementation above"
+    send: false
+  - label: "🔒 Security Review"
+    agent: security-reviewer
+    prompt: "Perform a security review of the implementation above"
+    send: false
+  - label: "✨ Apply Clean Code"
+    agent: clean-code
+    prompt: "Refactor this code to follow clean code principles"
+    send: false
 ---
 # Principal software engineer mode instructions
 

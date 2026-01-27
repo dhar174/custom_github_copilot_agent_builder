@@ -1,6 +1,15 @@
 ---
 description: 'Generate or update specification documents for new or existing functionality.'
-tools: ['vscode', 'execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'read/getTaskOutput', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'github/issue_read', 'github/issue_write', 'github/list_branches', 'github/list_commits', 'github/list_issues', 'github/list_pull_requests', 'github/pull_request_read', 'github/search_issues', 'github/search_pull_requests', 'github/sub_issue_write', 'github/update_pull_request', 'github/update_pull_request_branch', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'github/issue_read', 'github/issue_write', 'github/list_branches', 'github/list_commits', 'github/list_issues', 'github/list_pull_requests', 'github/pull_request_read', 'github/search_issues', 'github/search_pull_requests', 'github/sub_issue_write', 'github/update_pull_request', 'github/update_pull_request_branch', 'io.github.upstash/context7/*', 'mcp_docker/ask_question', 'mcp_docker/create_entities', 'mcp_docker/create_relations', 'mcp_docker/delete_entities', 'mcp_docker/delete_observations', 'mcp_docker/delete_relations', 'mcp_docker/get_me', 'mcp_docker/open_nodes', 'mcp_docker/read_graph', 'mcp_docker/read_wiki_contents', 'mcp_docker/read_wiki_structure', 'mcp_docker/search_generic_documentation', 'mcp_docker/search_nodes', 'mcp_docker/resolve-library-id', 'mcp_docker/sequentialthinking', 'microsoft/markitdown/*', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'ms-vscode.vscode-websearchforcopilot/websearch', 'todo']
+tools: ['search/codebase', 'search/usages', 'read/readFile', 'read/problems', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web/fetch', 'web/githubRepo', 'github/issue_read', 'github/list_issues', 'github/search_issues', 'context7/*', 'todo']
+handoffs:
+  - label: "📝 Create Implementation Plan"
+    agent: implementation-plan
+    prompt: "Generate a detailed implementation plan based on this specification"
+    send: false
+  - label: "🏗️ Review Architecture"
+    agent: architect
+    prompt: "Review and refine the architecture for this specification"
+    send: false
 ---
 # Specification mode instructions
 

@@ -1,22 +1,17 @@
----
+---yaml
 description: Refine the requirement or issue with Acceptance Criteria, Technical Considerations,
   Edge Cases, and NFRs
-tools:
-- list_issues
-- githubRepo
-- search
-- add_issue_comment
-- create_issue
-- create_issue_comment
-- update_issue
-- delete_issue
-- get_issue
-- search_issues
-- execute
-- read
-- agent
-- todo
 infer: true
+tools: ['github/list_issues', 'web/githubRepo', 'search/codebase', 'search', 'github/add_issue_comment', 'github/create_issue', 'github/update_issue', 'github/delete_issue', 'github/get_issue', 'github/search_issues']
+handoffs:
+  - label: "🐛 Debug This Issue"
+    agent: debug
+    prompt: "Debug the issue described above"
+    send: false
+  - label: "📐 Create Specification"
+    agent: specification
+    prompt: "Create a technical specification for this refined issue"
+    send: false
 ---
 
 # Refine Requirement or Issue Chat Mode

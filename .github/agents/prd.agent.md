@@ -1,26 +1,18 @@
----
+---yaml
 description: Generate a comprehensive Product Requirements Document (PRD) in Markdown,
   detailing user stories, acceptance criteria, technical considerations, and metrics.
   Optionally create GitHub issues upon user confirmation.
-name: Create PRD Chat Mode
-tools:
-- codebase
-- edit/editFiles
-- fetch
-- findTestFiles
-- list_issues
-- githubRepo
-- search
-- add_issue_comment
-- create_issue
-- update_issue
-- get_issue
-- search_issues
-- execute
-- read
-- agent
-- todo
 infer: true
+tools: ['search/codebase', 'edit/editFiles', 'web/fetch', 'web/githubRepo', 'search', 'github/list_issues', 'github/create_issue', 'github/update_issue', 'github/get_issue', 'github/search_issues', 'github/add_issue_comment']
+handoffs:
+  - label: "🏗️ Design Architecture"
+    agent: architect
+    prompt: "Design the system architecture for this PRD"
+    send: false
+  - label: "📐 Create Specification"
+    agent: specification
+    prompt: "Create technical specifications for this PRD"
+    send: false
 ---
 
 # Create PRD Chat Mode

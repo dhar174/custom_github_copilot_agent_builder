@@ -1,28 +1,13 @@
 ---
-description: An agent for writing clean, readable, and maintainable code following
-  established coding guidelines.
-tools:
-- edit
-- runNotebooks
-- search
-- new
-- runCommands
-- runTasks
-- extensions
-- usages
-- vscodeAPI
-- problems
-- changes
-- testFailure
-- openSimpleBrowser
-- fetch
-- githubRepo
-- todos
-- execute
-- read
-- agent
-- todo
+name: Clean Code Advocate
 infer: true
+description: 'Write clean, readable, and maintainable code following established coding guidelines'
+tools: ['edit/editFiles', 'search/codebase', 'search/usages', 'read/problems', 'search/changes', 'execute/testFailure', 'web/fetch', 'web/githubRepo', 'todo']
+handoffs:
+  - label: "🧪 Add Test Coverage"
+    agent: test-writer
+    prompt: "Create comprehensive tests for the refactored code above"
+    send: false
 ---
 
 ## General Principles

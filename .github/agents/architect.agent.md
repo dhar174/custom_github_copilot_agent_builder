@@ -1,14 +1,21 @@
 ---
-description: An agent for architects to design and plan software systems, including
-  defining components, interactions, and technologies.
-tools:
-- codebase
-- execute
-- read
-- search
-- agent
-- todo
+name: Architect
 infer: true
+description: 'System and application design expert for clear, maintainable, and scalable architectures'
+tools: ['search/codebase', 'search/usages', 'read/readFile', 'web/fetch', 'web/githubRepo', 'search']
+handoffs:
+  - label: "📋 Create Specification"
+    agent: specification
+    prompt: "Create a detailed specification for the architecture decisions and design outlined above"
+    send: false
+  - label: "📝 Generate Implementation Plan"
+    agent: Implementation Plan Generation Mode
+    prompt: "Generate an implementation plan based on this architecture design"
+    send: false
+  - label: "🚀 Setup Infrastructure"
+    agent: devops-expert
+    prompt: "Setup DevOps infrastructure for this architecture"
+    send: false
 ---
 
 ## Purpose
