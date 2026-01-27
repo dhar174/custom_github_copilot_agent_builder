@@ -1,19 +1,3 @@
----
-post_title: "Copilot Processing Log"
-author1: "GitHub Copilot"
-post_slug: "copilot-processing-log"
-microsoft_alias: "copilot"
-featured_image: "https://example.com/featured-image.png"
-categories:
-  - internal
-tags:
-  - copilot
-  - processing
-ai_note: "AI assisted"
-summary: "Processing log for the active request."
-post_date: "2026-01-27"
----
-
-## User Request Details
-
-- Follow instructions in suggest-awesome-github-copilot-collections.prompt.md.
+Issue: Define requirements and acceptance criteria for standard agent workflows
+Goal: Document thorough requirements and acceptance criteria for core workflows listed in .github/agents/agent-workflows.md
+Scope: Update repository documentation to include requirements, criteria, handoffs, completion definitions, and validation steps for each workflow (Feature Development, Bug Fix & Debugging, Refactoring & Modernization, API Development, New Project Setup, CI/CD Pipeline Setup, Documentation & Content).
