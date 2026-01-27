@@ -430,7 +430,7 @@ flowchart LR
 ### Handoff Chain
 1. **Plan Mode** → `"Create documentation outline"` → **Specification**
 2. **Specification** → `"Create technical content"` → **Technical Content Evaluator**
-3. **Technical Content** → `"Review and refine"` → **Code Reviewer** or **Mentor**
+3. **Technical Content Evaluator** → "Review and refine" → **Code Reviewer** or **Mentor**
 
 ### Completion Definition
 The documentation workflow is complete when: (1) All planned content sections are written, (2) Technical accuracy is verified by subject matter experts, (3) Examples and code snippets are tested and work correctly, (4) Documentation passes editorial review, (5) Content is published and accessible to target audience
