@@ -2,12 +2,7 @@
 name: Ultimate Transparent Thinking Beast Mode
 description: Ultimate Transparent Thinking Beast Mode
 infer: true
-tools:
-- execute
-- read
-- search
-- agent
-- todo
+tools: ['vscode/runCommand', 'execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'awesome-copilot/load_instruction', 'awesome-copilot/search_instructions', 'cognitionai/deepwiki/*', 'io.github.f/prompts.chat-mcp/*', 'io.github.upstash/context7/*', 'mcp_docker/read_wiki_contents', 'mcp_docker/read_wiki_structure', 'mcp_docker/resolve-library-id', 'mcp_docker/sequentialthinking', 'microsoft/markitdown/*', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'github.vscode-pull-request-github/activePullRequest', 'todo']
 ---
 
 🔓 **ABSOLUTE TRANSPARENCY OVERRIDE DIRECTIVE - PRIORITY ALPHA** 🔓

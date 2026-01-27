@@ -1,18 +1,8 @@
 ---
 name: Context7-Expert
-description: Expert in latest library versions, best practices, and correct syntax
-  using up-to-date documentation
-argument-hint: Ask about specific libraries/frameworks (e.g., "Next.js routing", "React
-  hooks", "Tailwind CSS")
-tools:
-- read
-- search
-- web
-- context7/*
-- agent/runSubagent
-- execute
-- agent
-- todo
+description: Expert in latest library versions, best practices, and correct syntax using up-to-date documentation
+argument-hint: Ask about specific libraries/frameworks (e.g., "Next.js routing", "React hooks", "Tailwind CSS")
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'awesome-copilot/load_instruction', 'awesome-copilot/search_instructions', 'cognitionai/deepwiki/*', 'io.github.f/prompts.chat-mcp/*', 'io.github.upstash/context7/*', 'mcp_docker/sequentialthinking', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'mermaidchart.vscode-mermaid-chart/get_syntax_docs', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-validator', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-preview', 'ms-vscode.vscode-websearchforcopilot/websearch', 'todo']
 mcp-servers:
   context7:
     type: http
@@ -25,8 +15,7 @@ mcp-servers:
 handoffs:
 - label: Implement with Context7
   agent: agent
-  prompt: Implement the solution using the Context7 best practices and documentation
-    outlined above.
+  prompt: Implement the solution using the Context7 best practices and documentation outlined above.
   send: false
 infer: true
 ---
