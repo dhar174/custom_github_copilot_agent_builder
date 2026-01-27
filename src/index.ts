@@ -79,6 +79,7 @@ async function run(): Promise<void> {
   try {
     const repo = core.getInput('repo', { required: true });
     const packVersion = core.getInput('pack_version');
+    const packRoot = core.getInput('pack_root') || process.cwd();
     const packComponents = parseComponents(core.getInput('pack_components'));
     const configPath = core.getInput('config_path') || '.github/agentops-pack.yml';
     const apply = parseBoolean(core.getInput('apply'), false);
@@ -132,7 +133,7 @@ async function run(): Promise<void> {
       unknownFields: mergeResult.unknownFields,
     };
 
-    const source = loadPackSource(process.cwd(), summary.components);
+    const source = loadPackSource(packRoot, summary.components);
     source.warnings.forEach((warning) => core.warning(warning));
 
     const applyResult = applyPackFiles(process.cwd(), source.files, {

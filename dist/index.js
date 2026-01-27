@@ -105,6 +105,7 @@ async function run() {
     try {
         const repo = core.getInput('repo', { required: true });
         const packVersion = core.getInput('pack_version');
+        const packRoot = core.getInput('pack_root') || process.cwd();
         const packComponents = parseComponents(core.getInput('pack_components'));
         const configPath = core.getInput('config_path') || '.github/agentops-pack.yml';
         const apply = parseBoolean(core.getInput('apply'), false);
@@ -146,7 +147,7 @@ async function run() {
             permissionsMode: mergeResult.config.permissionsMode,
             unknownFields: mergeResult.unknownFields,
         };
-        const source = (0, source_1.loadPackSource)(process.cwd(), summary.components);
+        const source = (0, source_1.loadPackSource)(packRoot, summary.components);
         source.warnings.forEach((warning) => core.warning(warning));
         const applyResult = (0, engine_1.applyPackFiles)(process.cwd(), source.files, {
             mode: summary.apply ? 'apply' : 'dry-run',
