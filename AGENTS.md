@@ -42,7 +42,7 @@ Generate and maintain high-quality, repo-specific Copilot/AgentOps frameworks th
 - **Custom agents**: `.github/agents/*.agent.md` (planner, implementer, reviewer, specialists)
 - **Prompt files**: `.github/prompts/*.prompt.md` (Copilot chat skills)
 - **GitHub Models prompts**: `*.prompt.yml` (eval-ready workflows)
-- **Governance files**: `docs/agentops/repo-profile.md`, `docs/agentops/mcp.md`, `docs/agentops/decision-log.md`
+- **Governance files**: `repo-profile.md`, `mcp.md`, `decision-log.md` (at repository root)
 - **Context and memory**: `*.context.md`, `*.memory.md`
 - **Spec templates**: `docs/specs/*.md`
 
@@ -189,11 +189,10 @@ custom_github_copilot_agent_builder/
 │   │   ├── apply-pack.yml           # Reusable workflow (workflow_call + workflow_dispatch)
 │   │   ├── pack-staging.yml         # Staging environment workflow
 │   │   └── pack-prod.yml            # Production environment workflow
-│   ├── agents/                      # Canonical agent definitions (builder's own agents)
-│   │   ├── planner.agent.md
-│   │   ├── implementer.agent.md
-│   │   ├── reviewer.agent.md
-│   │   └── *.agent.md
+│   ├── agents/                      # Agent definitions for this builder repo
+│   │   ├── plan.agent.md            # Example: Planning specialist
+│   │   ├── architect.agent.md       # Example: Architecture specialist
+│   │   └── *.agent.md               # Additional custom agents
 │   ├── prompts/                     # Prompt templates for builder agents
 │   └── instructions/                # Instructions for this builder repo
 ├── docs/
@@ -226,7 +225,6 @@ custom_github_copilot_agent_builder/
 │   │   ├── merge.ts
 │   │   └── *.test.ts
 │   └── index.ts                     # Main orchestration
-├── templates/                       # Template packs (base, language-specific)
 ├── AGENTS.md                        # This file
 ├── README.md                        # High-level overview
 ├── repo-profile.md                  # Builder repo's own profile
@@ -333,10 +331,10 @@ test('applies template idempotently', async () => {
 
 **Test Strategy**:
 ```typescript
-// Example from src/sense/snapshot.ts tests
+// Example based on src/sense/snapshot.ts
 test('generates identical snapshot for same repo state', async () => {
-  const snapshot1 = await generateSnapshot(repoPath);
-  const snapshot2 = await generateSnapshot(repoPath);
+  const snapshot1 = await createSnapshot(repoPath, 'owner/repo', 'main');
+  const snapshot2 = await createSnapshot(repoPath, 'owner/repo', 'main');
   expect(snapshot1).toEqual(snapshot2);
 });
 ```
@@ -356,15 +354,16 @@ test('generates identical snapshot for same repo state', async () => {
 // Example from src/apply/managed-sections.test.ts
 test('preserves human edits outside managed blocks', async () => {
   const original = `
-<!-- BEGIN: agentops-managed -->
+<!-- agentops:begin intro -->
 Generated content v1
-<!-- END: agentops-managed -->
+<!-- agentops:end intro -->
 Human-written content here
 `;
-  const updated = updateManagedSections(original, 'Generated content v2');
-  expect(updated).toContain('Human-written content here'); // Preserved
-  expect(updated).toContain('Generated content v2'); // Updated
-  expect(updated).not.toContain('Generated content v1'); // Replaced
+  const sections = [{ id: 'intro', content: 'Generated content v2' }];
+  const result = applyManagedSections(original, sections, {});
+  expect(result.content).toContain('Human-written content here'); // Preserved
+  expect(result.content).toContain('Generated content v2'); // Updated
+  expect(result.content).not.toContain('Generated content v1'); // Replaced
 });
 ```
 
@@ -507,21 +506,24 @@ describe('ModuleName', () => {
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "commonjs",           // CommonJS for Node.js compatibility
-    "lib": ["ES2020"],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,                 // Enable all strict type checks
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true
+    "skipLibCheck": true,
+    "noEmitOnError": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+  "include": [
+    "src/**/*",
+    "src/**/*.test.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
 ```
 
@@ -742,7 +744,7 @@ import * as github from '@actions/github';
 
 // 3. Internal modules (relative imports)
 import { RepoSnapshot } from './types';
-import { generateSnapshot } from './snapshot';
+import { createSnapshot } from './snapshot';
 
 // 4. Type-only imports
 import type { PlanManifest } from '../plan/types';
@@ -767,7 +769,7 @@ throw new SnapshotError(
 
 // Handle errors at appropriate boundaries
 try {
-  const snapshot = await generateSnapshot(repoPath);
+  const snapshot = await createSnapshot(repoPath, 'owner/repo', 'main');
 } catch (error) {
   if (error instanceof SnapshotError) {
     core.setFailed(`Snapshot generation failed: ${error.message}`);
@@ -783,10 +785,11 @@ Use JSDoc for public APIs:
 
 ```typescript
 /**
- * Generates a deterministic snapshot of a repository.
+ * Creates a deterministic snapshot of a repository.
  * 
- * @param repoPath - Absolute path to the repository root
- * @param options - Optional configuration for snapshot generation
+ * @param rootPath - Absolute path to the repository root
+ * @param repo - Repository identifier (owner/name)
+ * @param defaultBranch - Default branch name
  * @returns A RepoSnapshot object describing the repository
  * @throws {SnapshotError} If the repository cannot be scanned
  * 
@@ -794,9 +797,10 @@ Use JSDoc for public APIs:
  * This function must be deterministic: running it twice on the same
  * repository state produces identical output (FR-1.2, NFR-2).
  */
-export async function generateSnapshot(
-  repoPath: string,
-  options?: SnapshotOptions
+export async function createSnapshot(
+  rootPath: string,
+  repo: string,
+  defaultBranch: string
 ): Promise<RepoSnapshot> {
   // Implementation
 }
@@ -818,40 +822,37 @@ The core deployment mechanism is `.github/workflows/apply-pack.yml`, a reusable 
 name: Apply AgentOps Pack
 
 on:
-  workflow_call:
-    inputs:
-      repo:
-        description: 'Target repository (owner/name)'
-        required: true
-        type: string
-      mode:
-        description: 'Application mode: safe, refresh, or overwrite'
-        required: false
-        default: 'safe'
-        type: string
-      pack_version:
-        description: 'Pack version or git ref'
-        required: false
-        type: string
-      pack_components:
-        description: 'Comma-separated component list'
-        required: false
-        type: string
-    secrets:
-      GITHUB_TOKEN:
-        required: true
-      OPENAI_API_KEY:
-        required: true
-
   workflow_dispatch:
     inputs:
       repo:
         description: 'Target repository (owner/name)'
         required: true
-      # ... same inputs as workflow_call
+      pack_version:
+        description: 'Pack version or ref'
+        required: false
+      pack_components:
+        description: 'Comma-separated components'
+        required: false
+      apply:
+        description: 'Apply (true) or dry-run (false)'
+        required: false
+        default: 'false'
+      override_token:
+        description: 'Optional PAT/App token for cross-repo'
+        required: false
+      permissions_mode:
+        description: "Permission profile: 'default' or 'cross-repo'"
+        required: false
+        default: 'default'
+      strict:
+        description: 'Enable strict validation'
+        required: false
+        default: 'false'
 ```
 
 ### Example: Invoking from Target Repository
+
+**Security Note**: When invoking workflows from external repositories, always pin to an immutable reference (specific commit SHA or signed release tag) instead of a mutable branch like `@main`. This prevents potential credential exfiltration if the upstream repository is compromised.
 
 A target repository can invoke this workflow like this:
 
@@ -866,14 +867,24 @@ on:
 
 jobs:
   apply:
-    uses: dhar174/custom_github_copilot_agent_builder/.github/workflows/apply-pack.yml@main
-    with:
-      repo: ${{ github.repository }}
-      mode: 'refresh'  # Only update managed sections
-      pack_components: 'base,typescript,testing'
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout this builder repo
+        uses: actions/checkout@v4
+        with:
+          repository: dhar174/custom_github_copilot_agent_builder
+          ref: main  # In production, pin to a specific commit SHA for security
+          
+      - name: Apply AgentOps Pack
+        uses: ./github/actions/apply-pack
+        with:
+          repo: ${{ github.repository }}
+          apply: 'true'
+          pack_components: 'base,typescript,testing'
+          llm_token: ${{ secrets.GH_PAT }}
 ```
 
 ### Three Application Modes (FR-7)
@@ -938,8 +949,9 @@ Required secrets and environment variables:
 # Needs: contents: write, pull-requests: write
 GITHUB_TOKEN=ghp_xxx or ghs_xxx
 
-# OpenAI API key for agentic stages (planning, refinement)
-OPENAI_API_KEY=sk-xxx
+# LLM token for agentic stages (planning, refinement)
+# Uses GitHub PAT by default (passed as llm_token input)
+GH_PAT=${{ secrets.GH_PAT }}
 ```
 
 #### For Target Repositories
@@ -948,50 +960,46 @@ OPENAI_API_KEY=sk-xxx
 # Standard GitHub Actions token (sufficient for most cases)
 GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
-# OpenAI API key (from repository secrets)
-OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+# LLM token (GitHub PAT with appropriate permissions)
+GH_PAT=${{ secrets.GH_PAT }}
 
 # Optional: Custom token for cross-repo operations
-OVERRIDE_TOKEN=${{ secrets.CUSTOM_PAT }}
+override_token=${{ secrets.CUSTOM_PAT }}
 ```
 
 ### Workflow Outputs
 
-The `apply-pack.yml` workflow exposes these outputs:
+The composite action (`.github/actions/apply-pack`) exposes these outputs:
 
 ```yaml
 outputs:
-  changed:
-    description: 'Whether any files were changed'
-    value: ${{ jobs.apply-pack.outputs.changed }}
-  changed_files:
-    description: 'JSON array of changed file paths'
-    value: ${{ jobs.apply-pack.outputs.changed_files }}
-  verification_passed:
-    description: 'Whether verification checks passed'
-    value: ${{ jobs.apply-pack.outputs.verification_passed }}
+  summary:
+    description: 'Summary of apply-pack execution (string or JSON)'
+  pr_number:
+    description: 'Number of created or updated pull request'
   pr_url:
     description: 'URL of created or updated pull request'
-    value: ${{ jobs.apply-pack.outputs.pr_url }}
 ```
 
 ### Local Development and Testing
 
-For local testing without GitHub Actions:
+For local testing, the action is designed to run within GitHub Actions environment. To test locally:
 
 ```bash
 # 1. Build the TypeScript
 npm run build
 
-# 2. Set environment variables
-export GITHUB_TOKEN=your_token
-export OPENAI_API_KEY=your_key
+# 2. Set environment variables (simulating GitHub Actions inputs)
+export INPUT_REPO=owner/repo
+export INPUT_APPLY=false
+export INPUT_LLM_TOKEN=your_token
 
-# 3. Run the CLI (if implemented)
-node dist/index.js scan /path/to/repo
-node dist/index.js generate /path/to/repo
-node dist/index.js apply /path/to/repo --mode safe
+# 3. Run the action (requires @actions/core environment)
+# Note: Full local testing requires GitHub Actions environment simulation
+# Consider using act (https://github.com/nektos/act) for local workflow testing
 ```
+
+**Recommended approach**: Test changes via pull requests in a test repository or use GitHub Actions workflow_dispatch for controlled testing.
 
 ### Performance Targets (NFR-4)
 
@@ -1039,26 +1047,26 @@ For files with mixed human and generated content:
 
 Human content here...
 
-<!-- BEGIN: agentops-managed -->
+<!-- agentops:begin intro -->
 ## Generated Section
 
 This content is managed and will be updated automatically.
-<!-- END: agentops-managed -->
+<!-- agentops:end intro -->
 
 More human content...
 
-<!-- BEGIN: agentops-managed -->
+<!-- agentops:begin features -->
 ## Another Generated Section
 
 More managed content.
-<!-- END: agentops-managed -->
+<!-- agentops:end features -->
 
 Final human notes...
 ```
 
 **Behavior by mode**:
 - `safe`: Blocks are created if they don't exist
-- `refresh`: Only content between `BEGIN` and `END` markers is updated
+- `refresh`: Only content between `agentops:begin` and `agentops:end` markers is updated
 - `overwrite`: Entire file is regenerated (human content lost - use carefully)
 
 #### Parsing Rules
@@ -1072,23 +1080,41 @@ Final human notes...
 
 ```typescript
 // From src/apply/managed-sections.ts
-export function updateManagedBlock(
-  original: string,
-  newContent: string,
-  blockId?: string
-): string {
-  const beginMarker = '<!-- BEGIN: agentops-managed -->';
-  const endMarker = '<!-- END: agentops-managed -->';
+export function applyManagedSections(
+  targetContent: string | null,
+  sections: ManagedSection[],
+  options: { refreshOnly?: boolean }
+): { content: string; status: 'added' | 'updated' | 'unchanged' | 'skipped'; reason?: string } {
+  if (!targetContent) {
+    return { content: renderManagedFile(sections), status: 'added' };
+  }
+
+  const normalized = normalizeLineEndings(targetContent);
+  const hasMarkers = normalized.includes('<!-- agentops:');
+
+  if (!hasMarkers) {
+    return {
+      content: normalized,
+      status: 'skipped',
+      reason: 'No managed markers present; skipping file to avoid overwrites.',
+    };
+  }
+
+  let updated = normalized;
+  for (const section of sections) {
+    const pattern = new RegExp(
+      `<!-- agentops:begin ${section.id} -->[\\s\\S]*?<!-- agentops:end ${section.id} -->`,
+      'g'
+    );
+    if (pattern.test(updated)) {
+      updated = updated.replace(
+        pattern,
+        `<!-- agentops:begin ${section.id} -->\n${section.content.trimEnd()}\n<!-- agentops:end ${section.id} -->`
+      );
+    }
+  }
   
-  const regex = new RegExp(
-    `${escapeRegex(beginMarker)}[\\s\\S]*?${escapeRegex(endMarker)}`,
-    'g'
-  );
-  
-  return original.replace(
-    regex,
-    `${beginMarker}\n${newContent}\n${endMarker}`
-  );
+  return { content: updated, status: 'updated' };
 }
 ```
 
@@ -1238,8 +1264,8 @@ interface PlanManifest {
   // Managed-block configuration
   managedPolicy: {
     marker: string;                     // e.g., "<!-- agentops-managed: true -->"
-    blockStart: string;                 // e.g., "<!-- BEGIN: agentops-managed -->"
-    blockEnd: string;                   // e.g., "<!-- END: agentops-managed -->"
+    blockStart: string;                 // e.g., "<!-- agentops:begin"
+    blockEnd: string;                   // e.g., "<!-- agentops:end"
   };
   
   // Acceptance criteria for verification
@@ -1594,7 +1620,7 @@ permissions:
 **Testing**:
 ```typescript
 test('idempotence: double application produces no diffs', async () => {
-  const snapshot = await generateSnapshot(repoPath);
+  const snapshot = await createSnapshot(repoPath, 'owner/repo', 'main');
   const manifest = await generatePlan(snapshot);
   
   const result1 = await applyPack(repoPath, manifest, { mode: 'refresh' });
@@ -2234,31 +2260,32 @@ ls -la .github/workflows/apply-pack.yml
 
 1. **Verify markers are exact**:
 ```markdown
-<!-- BEGIN: agentops-managed -->  ✓ Correct
-<!-- BEGIN:agentops-managed -->   ✗ Wrong (no space)
-<!-- begin: agentops-managed -->  ✗ Wrong (lowercase)
+<!-- agentops:begin intro -->  ✓ Correct
+<!-- agentops:begin intro-->   ✗ Wrong (no space before -->)
+<!-- Agentops:begin intro -->  ✗ Wrong (capitalization)
 ```
 
 2. **Check for missing end markers**:
 ```bash
-# Search for BEGIN markers without matching END
-grep -n "BEGIN: agentops-managed" file.md
-grep -n "END: agentops-managed" file.md
+# Search for begin markers without matching end
+grep -n "agentops:begin" file.md
+grep -n "agentops:end" file.md
 # Count should match
 ```
 
 3. **Test marker parsing**:
 ```typescript
-import { updateManagedBlock } from './src/apply/managed-sections';
+import { applyManagedSections } from './src/apply/managed-sections';
 
 const content = `
-<!-- BEGIN: agentops-managed -->
+<!-- agentops:begin intro -->
 old content
-<!-- END: agentops-managed -->
+<!-- agentops:end intro -->
 `;
 
-const updated = updateManagedBlock(content, 'new content');
-console.log(updated);  // Should contain 'new content'
+const sections = [{ id: 'intro', content: 'new content' }];
+const result = applyManagedSections(content, sections, {});
+console.log(result.content);  // Should contain 'new content'
 ```
 
 4. **Verify mode is 'refresh'**:
@@ -2683,7 +2710,7 @@ node dist/index.js apply /path/to/repo          # Apply framework
 
 ```bash
 GITHUB_TOKEN=ghp_xxx       # GitHub API access
-OPENAI_API_KEY=sk-xxx      # LLM access for planning
+GH_PAT=ghp_xxx            # LLM token (passed as llm_token)
 ```
 
 ### Links
