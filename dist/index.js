@@ -158,7 +158,17 @@ async function run() {
             core.setFailed(`Unknown fields present: ${mergeResult.unknownFields.join(', ')}`);
             return;
         }
-        const selection = (0, manifest_1.validateSelection)(PACK_MANIFEST, mergeResult.config.components);
+        // Agentic: If we have a plan, we can augment the component selection
+        const requestedComponents = [...mergeResult.config.components];
+        if (plan && plan.selection && plan.selection.components) {
+            core.info(`Agentic Plan suggests components: ${plan.selection.components.join(', ')}`);
+            // We merge them. Set ensures uniqueness.
+            plan.selection.components.forEach(c => {
+                if (!requestedComponents.includes(c))
+                    requestedComponents.push(c);
+            });
+        }
+        const selection = (0, manifest_1.validateSelection)(PACK_MANIFEST, requestedComponents);
         selection.warnings.forEach((w) => core.warning(w));
         if (selection.errors.length > 0) {
             core.setFailed(`Component selection failed: ${selection.errors.join('; ')}`);
@@ -174,6 +184,36 @@ async function run() {
         };
         const source = (0, source_1.loadPackSource)(packRoot, summary.components);
         source.warnings.forEach((warning) => core.warning(warning));
+        // Agentic: Inject dynamic content from Plan
+        if (plan) {
+            core.info('Agentic: Injecting dynamic content from Plan...');
+            // 1. repo-profile.md
+            if (summary.components.includes('repo-profile')) {
+                const profileContent = [
+                    '# Repository Profile',
+                    '',
+                    '## Purpose',
+                    plan.repoProfile.purpose,
+                    '',
+                    '## Stack',
+                    ...plan.repoProfile.stack.map(s => `- ${s}`),
+                    '',
+                    '## Recommended Commands',
+                    ...Object.entries(plan.repoProfile.commands || {}).map(([k, v]) => `- **${k}**: \`${v}\``),
+                    ''
+                ].join('\n');
+                const profileFileIndex = source.files.findIndex(f => f.path === 'repo-profile.md');
+                if (profileFileIndex >= 0) {
+                    source.files[profileFileIndex].content = profileContent;
+                }
+                else {
+                    source.files.push({ path: 'repo-profile.md', content: profileContent });
+                }
+                core.info('  - Overrode repo-profile.md with LLM insights');
+            }
+            // 2. AGENTS.md (if exists, maybe append a note about planned agents)
+            // For now, we leave AGENTS.md as static, but eventually we could generate custom agents here.
+        }
         const applyResult = (0, engine_1.applyPackFiles)(process.cwd(), source.files, {
             mode: summary.apply ? 'apply' : 'dry-run',
             refreshOnly: true,
