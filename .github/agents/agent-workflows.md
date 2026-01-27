@@ -374,6 +374,9 @@ flowchart TD
 
 ### Handoff Chain
 1. **DevOps Expert** → `"Create GitHub Actions workflows"` → **GitHub Actions Expert**
+2. **GitHub Actions Expert** → `"Add test configuration"` → **Test Configuration**
+3. **Test Configuration** → `"Configure security scanning"` → **Security Scanning**
+4. **Security Scanning** → `"Configure deployment"` → **Deploy Config**
 
 ### Completion Definition
 The CI/CD pipeline setup workflow is complete when: (1) All pipeline stages execute successfully, (2) Automated tests run on every PR, (3) Security scans identify vulnerabilities, (4) Deployments to all environments work without manual intervention, (5) Rollback procedures are tested and documented
