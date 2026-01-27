@@ -1,6 +1,5 @@
 ---
-description: Generate an implementation plan for new features or refactoring existing
-  code.
+description: Generate an implementation plan for new features or refactoring existing code.
 name: Implementation Plan Generation Mode
 tools:
 - search/codebase
