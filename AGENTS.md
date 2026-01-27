@@ -315,8 +315,8 @@ Testing must focus on these key acceptance criteria:
 ```typescript
 // Example pattern from src/apply/engine.test.ts
 test('applies template idempotently', async () => {
-  const result1 = await applyTemplate(snapshot, manifest);
-  const result2 = await applyTemplate(snapshot, manifest);
+  const result1 = await applyPackFiles(snapshot, manifest);
+  const result2 = await applyPackFiles(snapshot, manifest);
   expect(result1).toEqual(result2); // Must be byte-for-byte identical
 });
 ```
