@@ -3,16 +3,22 @@ id: bolt-pack-apply-engine-1
 unit: 001-pack-apply-engine
 intent: 001-agentops-pack-applier
 type: simple-construction-bolt
-status: in-progress
+status: complete
 stories:
   - 001-baseline-apply-and-dry-run
   - 002-managed-sections-protection
   - 003-idempotent-reapply-and-delta
-created: 2026-01-26T00:00:00Z
-started: 2026-01-26T00:35:00Z
-completed: null
-current_stage: plan
-stages_completed: []
+created: 2026-01-26T00:00:00.000Z
+started: 2026-01-26T00:35:00.000Z
+completed: "2026-01-27T01:13:12Z"
+current_stage: null
+stages_completed:
+  - name: plan
+    completed: 2026-01-26T00:40:00.000Z
+    artifact: implementation-plan.md
+  - name: implement
+    completed: 2026-01-26T00:55:00.000Z
+    artifact: implementation-walkthrough.md
 requires_bolts: []
 enables_bolts:
   - bolt-pr-governance-and-reporting-1
@@ -47,9 +53,9 @@ Deliver deterministic apply flow that updates managed blocks only and reports no
 
 ## Stages
 
-- [ ] **1. plan**: Pending → approach + acceptance mapping
-- [ ] **2. implement**: Pending → engine code + managed section handling
-- [ ] **3. test**: Pending → coverage for dry-run/apply/idempotence
+- ✅ **1. plan**: Completed
+- ✅ **2. implement**: Completed
+- ⏳ **3. test**: In progress → coverage for dry-run/apply/idempotence
 
 ## Dependencies
 

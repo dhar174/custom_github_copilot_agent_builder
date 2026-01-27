@@ -3,7 +3,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { load as loadYaml } from 'js-yaml';
 import { mergeConfig } from './config/merge';
+import { applyPackFiles } from './apply/engine';
 import { validateSelection, PackManifest } from './pack/manifest';
+import { loadPackSource } from './pack/source';
+import { buildPrBody } from './pr/summary';
+import { upsertPr } from './pr/update';
 
 const DEFAULTS: Record<string, unknown> = {
   components: [],
@@ -13,6 +17,8 @@ const DEFAULTS: Record<string, unknown> = {
 };
 
 const PACK_MANIFEST: PackManifest = {
+  name: 'AgentOps Pack (Standard)',
+  version: '0.1.0',
   components: [
     { name: 'instructions' },
     { name: 'agents', requires: ['instructions'] },
@@ -126,14 +132,65 @@ async function run(): Promise<void> {
       unknownFields: mergeResult.unknownFields,
     };
 
+    const source = loadPackSource(process.cwd(), summary.components);
+    source.warnings.forEach((warning) => core.warning(warning));
+
+    const applyResult = applyPackFiles(process.cwd(), source.files, {
+      mode: summary.apply ? 'apply' : 'dry-run',
+      refreshOnly: true,
+    });
+
+    applyResult.warnings.forEach((warning) => core.warning(warning));
+
     if (summary.apply) {
-      core.info('Apply mode requested; apply engine not yet implemented in this bolt.');
+      core.info('Apply mode: managed sections updated for selected files.');
     } else {
-      core.info('Dry-run mode: configuration and selection prepared; no files will be written.');
+      core.info('Dry-run mode: computed change set without writing files.');
+    }
+
+    core.info(
+      `Change summary: added=${applyResult.summary.added}, updated=${applyResult.summary.updated}, unchanged=${applyResult.summary.unchanged}, skipped=${applyResult.summary.skipped}`,
+    );
+
+    if (summary.apply) {
+      const token = mergeResult.config.overrideToken || process.env.GITHUB_TOKEN;
+      if (token && typeof token === 'string') {
+        const [owner, name] = mergeResult.config.repo.split('/');
+        const runId = process.env.GITHUB_RUN_ID || '0';
+
+        const effectiveManifest = {
+            ...PACK_MANIFEST,
+            version: summary.packVersion !== 'latest' ? summary.packVersion : PACK_MANIFEST.version
+        };
+
+        const prBody = buildPrBody(applyResult, effectiveManifest, {
+            runId,
+            repo: mergeResult.config.repo
+        });
+
+        const prResult = await upsertPr({
+            token,
+            owner,
+            repo: name
+        }, {
+            branch: `agentops/pack-${effectiveManifest.version}`,
+            title: `chore(agentops): apply pack ${effectiveManifest.version}`,
+            commitMessage: `chore(agentops): apply pack ${effectiveManifest.version}`,
+            body: prBody
+        });
+        
+        if (prResult.prNumber > 0) {
+            core.info(`PR Governance: ${prResult.created ? 'Created' : 'Updated'} PR #${prResult.prNumber} (${prResult.url})`);
+            core.setOutput('pr_number', prResult.prNumber);
+            core.setOutput('pr_url', prResult.url);
+        }
+      } else {
+        core.info('Skipping PR governance: No token provided.');
+      }
     }
 
     core.info(`Pack applier configuration ready for ${summary.repo}`);
-    core.setOutput('summary', JSON.stringify(summary));
+    core.setOutput('summary', JSON.stringify({ ...summary, changes: applyResult.summary }));
   } catch (error) {
     core.setFailed(error instanceof Error ? error.message : String(error));
   }

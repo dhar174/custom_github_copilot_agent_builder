@@ -4,6 +4,8 @@ export interface PackComponent {
 }
 
 export interface PackManifest {
+  name: string;
+  version: string;
   components: PackComponent[];
 }
 

@@ -2,7 +2,7 @@
 unit: 001-pack-apply-engine
 intent: 001-agentops-pack-applier
 created: 2026-01-26T00:35:00Z
-last_updated: 2026-01-26T00:35:00Z
+last_updated: 2026-01-26T00:55:00Z
 ---
 
 # Construction Log: pack-apply-engine
@@ -32,6 +32,8 @@ last_updated: 2026-01-26T00:35:00Z
 | Date | Bolt | Event | Details |
 |------|------|-------|---------|
 | 2026-01-26 | bolt-pack-apply-engine-1 | started | Stage 1: plan |
+| 2026-01-26 | bolt-pack-apply-engine-1 | stage-complete | plan → implement (implementation-plan.md) |
+| 2026-01-26 | bolt-pack-apply-engine-1 | stage-complete | implement → test (implementation-walkthrough.md) |
 
 ## Execution Summary
 

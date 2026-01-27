@@ -3,15 +3,15 @@ id: bolt-pr-governance-and-reporting-1
 unit: 003-pr-governance-and-reporting
 intent: 001-agentops-pack-applier
 type: simple-construction-bolt
-status: planned
+status: complete
 stories:
   - 001-pr-body-summary-and-checklist
   - 002-update-existing-pr-and-churn-control
   - 003-no-timestamps-and-stable-ordering
 created: 2026-01-26T00:00:00Z
-started: null
-completed: null
-current_stage: null
+started: 2026-01-26T17:30:00Z
+completed: 2026-01-26T18:35:00Z
+current_stage: 3-test
 stages_completed: []
 requires_bolts:
   - bolt-pack-apply-engine-1

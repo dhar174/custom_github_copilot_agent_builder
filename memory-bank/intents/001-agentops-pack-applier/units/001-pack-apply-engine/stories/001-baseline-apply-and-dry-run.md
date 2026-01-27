@@ -2,11 +2,11 @@
 id: 001-baseline-apply-and-dry-run
 unit: 001-pack-apply-engine
 intent: 001-agentops-pack-applier
-status: draft
+status: complete
 priority: must
-created: 2026-01-26T00:00:00Z
+created: 2026-01-26T00:00:00.000Z
 assigned_bolt: null
-implemented: false
+implemented: true
 ---
 
 # Story: 001-baseline-apply-and-dry-run

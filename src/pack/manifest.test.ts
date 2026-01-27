@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { validateSelection, PackManifest } from './manifest';
 
 const manifest: PackManifest = {
+  name: 'test',
+  version: '0.0.0',
   components: [
     { name: 'instructions' },
     { name: 'prompts', requires: ['instructions'] },
@@ -29,6 +31,8 @@ describe('validateSelection', () => {
 
   it('detects cycles', () => {
     const cyclicManifest: PackManifest = {
+      name: 'cyclic',
+      version: '0.0.0',
       components: [
         { name: 'a', requires: ['b'] },
         { name: 'b', requires: ['a'] },

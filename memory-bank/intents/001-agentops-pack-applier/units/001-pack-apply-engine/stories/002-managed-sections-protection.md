@@ -2,11 +2,11 @@
 id: 002-managed-sections-protection
 unit: 001-pack-apply-engine
 intent: 001-agentops-pack-applier
-status: draft
+status: complete
 priority: must
-created: 2026-01-26T00:00:00Z
+created: 2026-01-26T00:00:00.000Z
 assigned_bolt: null
-implemented: false
+implemented: true
 ---
 
 # Story: 002-managed-sections-protection

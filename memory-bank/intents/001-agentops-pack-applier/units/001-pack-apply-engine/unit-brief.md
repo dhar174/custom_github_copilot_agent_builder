@@ -2,9 +2,9 @@
 unit: 001-pack-apply-engine
 intent: 001-agentops-pack-applier
 phase: inception
-status: draft
-created: 2026-01-26T00:00:00Z
-updated: 2026-01-26T00:00:00Z
+status: complete
+created: 2026-01-26T00:00:00.000Z
+updated: 2026-01-26T00:00:00.000Z
 ---
 
 # Unit Brief: pack-apply-engine
