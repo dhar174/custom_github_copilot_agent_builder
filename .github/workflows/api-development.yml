@@ -1,0 +1,16 @@
+name: API Development
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  api-development:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute workflow
+        run: |
+          echo "API Development workflow - RESTful/GraphQL API design, implementation, and documentation"
+          echo "Handoff chain: Plan Mode → API Architect → Specification → PSE → Test Writer → Security Reviewer → Technical Content"

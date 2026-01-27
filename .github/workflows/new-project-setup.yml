@@ -1,0 +1,16 @@
+name: New Project Setup
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  new-project-setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute workflow
+        run: |
+          echo "New Project Setup workflow - Complete project initialization from PRD to CI/CD infrastructure"
+          echo "Handoff chain: PRD Creator → Architect → Specification → DevOps Expert → PSE → Test Writer → GitHub Actions Expert"
