@@ -42,6 +42,7 @@ jobs:
         uses: ./.github/actions/apply-pack
         with:
           repo: ${{ inputs.repo }}
+          llm_token: ${{ secrets.GH_PAT }}
           pack_version: ${{ inputs.pack_version }}
           pack_components: ${{ inputs.pack_components }}
           config_path: .github/agentops-pack.yml

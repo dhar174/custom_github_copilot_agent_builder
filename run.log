@@ -1,0 +1,409 @@
+apply-pack-staging	Set up job	﻿2026-01-27T05:01:25.5210142Z Current runner version: '2.331.0'
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5235111Z ##[group]Runner Image Provisioner
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5235952Z Hosted Compute Agent
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5236530Z Version: 20260115.477
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5237472Z Commit: 4b342d620503cbe250a3154040964899ea7c9b00
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5238174Z Build Date: 2026-01-15T22:32:41Z
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5238850Z Worker ID: {c7ffb0fa-a155-4ef0-9372-f76673d2ea44}
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5239692Z Azure Region: westus
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5240202Z ##[endgroup]
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5241597Z ##[group]Operating System
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5242336Z Ubuntu
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5242825Z 24.04.3
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5243293Z LTS
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5243854Z ##[endgroup]
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5244335Z ##[group]Runner Image
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5244960Z Image: ubuntu-24.04
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5245568Z Version: 20260119.4.1
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5246583Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260119.4/images/ubuntu/Ubuntu2404-Readme.md
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5248515Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260119.4
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5249415Z ##[endgroup]
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5250651Z ##[group]GITHUB_TOKEN Permissions
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5252471Z Contents: write
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5253051Z Metadata: read
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5253707Z PullRequests: write
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5254248Z ##[endgroup]
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5256384Z Secret source: Actions
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5257697Z Prepare workflow directory
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5593727Z Prepare all required actions
+apply-pack-staging	Set up job	2026-01-27T05:01:25.5649252Z Getting action download info
+apply-pack-staging	Set up job	2026-01-27T05:01:25.9896496Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+apply-pack-staging	Set up job	2026-01-27T05:01:26.2192079Z Complete job name: apply-pack-staging
+apply-pack-staging	Checkout Target Repo	﻿2026-01-27T05:01:26.2914796Z ##[group]Run actions/checkout@v4
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2915916Z with:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2916434Z   repository: dhar174/langgraph_system_generator
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2917011Z   path: .
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2917877Z   token: ***
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2918288Z   ssh-strict: true
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2918783Z   ssh-user: git
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2919224Z   persist-credentials: true
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2919696Z   clean: true
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2920116Z   sparse-checkout-cone-mode: true
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2920637Z   fetch-depth: 1
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2921044Z   fetch-tags: false
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2921463Z   show-progress: true
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2921876Z   lfs: false
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2922270Z   submodules: false
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2922695Z   set-safe-directory: true
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.2923452Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4002188Z Syncing repository: dhar174/langgraph_system_generator
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4004220Z ##[group]Getting Git version info
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4005280Z Working directory is '/home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder'
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4006650Z [command]/usr/bin/git version
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4086372Z git version 2.52.0
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4113229Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4127942Z Temporarily overriding HOME='/home/runner/work/_temp/6db3111a-f0cd-49b0-ba25-4c49c30e98a1' before making global git config changes
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4129600Z Adding repository directory to the temporary git global config as a safe directory
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4141634Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4182191Z Deleting the contents of '/home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder'
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4185578Z ##[group]Initializing the repository
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4190363Z [command]/usr/bin/git init /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4292198Z hint: Using 'master' as the name for the initial branch. This default branch name
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4294284Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4296572Z hint: to use in all of your new repositories, which will suppress this warning,
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4297728Z hint: call:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4298229Z hint:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4298872Z hint: 	git config --global init.defaultBranch <name>
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4299674Z hint:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4300401Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4301799Z hint: 'development'. The just-created branch can be renamed via this command:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4303064Z hint:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4303723Z hint: 	git branch -m <name>
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4304483Z hint:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4305272Z hint: Disable this message with "git config set advice.defaultBranchName false"
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4307410Z Initialized empty Git repository in /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder/.git/
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4309775Z [command]/usr/bin/git remote add origin https://github.com/dhar174/langgraph_system_generator
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4340114Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4340885Z ##[group]Disabling automatic garbage collection
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4343986Z [command]/usr/bin/git config --local gc.auto 0
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4371668Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4372417Z ##[group]Setting up auth
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4378163Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4410657Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4749669Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.4782039Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.5010905Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.5041082Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.5275904Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.5310818Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.5311670Z ##[group]Determining the default branch
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.5313822Z Retrieving the default branch name
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.8503027Z Default branch 'main'
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.8504643Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.8505741Z ##[group]Fetching the repository
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:26.8511248Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9794782Z From https://github.com/dhar174/langgraph_system_generator
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9797402Z  * [new branch]      main       -> origin/main
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9826150Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9827997Z ##[group]Determining the checkout info
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9829471Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9832012Z [command]/usr/bin/git sparse-checkout disable
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9874532Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9901748Z ##[group]Checking out the ref
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:28.9904891Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:29.1291112Z Switched to a new branch 'main'
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:29.1292940Z branch 'main' set up to track 'origin/main'.
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:29.1308562Z ##[endgroup]
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:29.1348422Z [command]/usr/bin/git log -1 --format=%H
+apply-pack-staging	Checkout Target Repo	2026-01-27T05:01:29.1373313Z 55cbf9f3e8c69e11e79f1fa69058d45791ea8bc6
+apply-pack-staging	Checkout Pack Source	﻿2026-01-27T05:01:29.1737956Z ##[group]Run actions/checkout@v4
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1739099Z with:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1739893Z   path: _pack
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1741182Z   repository: dhar174/custom_github_copilot_agent_builder
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1742833Z   token: ***
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1743644Z   ssh-strict: true
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1744491Z   ssh-user: git
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1745373Z   persist-credentials: true
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1746370Z   clean: true
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1747452Z   sparse-checkout-cone-mode: true
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1748560Z   fetch-depth: 1
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1749427Z   fetch-tags: false
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1750338Z   show-progress: true
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1751213Z   lfs: false
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1752015Z   submodules: false
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1752899Z   set-safe-directory: true
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.1753859Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2696287Z Syncing repository: dhar174/custom_github_copilot_agent_builder
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2702848Z ##[group]Getting Git version info
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2705177Z Working directory is '/home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder/_pack'
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2745323Z [command]/usr/bin/git version
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2782557Z git version 2.52.0
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2808527Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2824141Z Temporarily overriding HOME='/home/runner/work/_temp/fd38378a-471c-48a5-a6b4-a783f603223e' before making global git config changes
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2829448Z Adding repository directory to the temporary git global config as a safe directory
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2840327Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder/_pack
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2871058Z ##[group]Initializing the repository
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2875923Z [command]/usr/bin/git init /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder/_pack
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2911984Z hint: Using 'master' as the name for the initial branch. This default branch name
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2915335Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2919617Z hint: to use in all of your new repositories, which will suppress this warning,
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2922321Z hint: call:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2923688Z hint:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2925418Z hint: 	git config --global init.defaultBranch <name>
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2927802Z hint:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2929714Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2932409Z hint: 'development'. The just-created branch can be renamed via this command:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2934069Z hint:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2934883Z hint: 	git branch -m <name>
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2936060Z hint:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2938433Z hint: Disable this message with "git config set advice.defaultBranchName false"
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2942751Z Initialized empty Git repository in /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder/_pack/.git/
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2947786Z [command]/usr/bin/git remote add origin https://github.com/dhar174/custom_github_copilot_agent_builder
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2957709Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2960335Z ##[group]Disabling automatic garbage collection
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2962199Z [command]/usr/bin/git config --local gc.auto 0
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2990345Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2991781Z ##[group]Setting up auth
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.2995784Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3025475Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3248934Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3280120Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3501416Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3534239Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3767759Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3801961Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3803777Z ##[group]Fetching the repository
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:29.3813458Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +566720f273604ee592d0caff8d0a75f63202f1e5:refs/remotes/origin/main
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6035579Z From https://github.com/dhar174/custom_github_copilot_agent_builder
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6037057Z  * [new ref]         566720f273604ee592d0caff8d0a75f63202f1e5 -> origin/main
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6066192Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6066909Z ##[group]Determining the checkout info
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6069613Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6076511Z [command]/usr/bin/git sparse-checkout disable
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6121721Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6151098Z ##[group]Checking out the ref
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:30.6156680Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:31.0054368Z Switched to a new branch 'main'
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:31.0055138Z branch 'main' set up to track 'origin/main'.
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:31.0083047Z ##[endgroup]
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:31.0125017Z [command]/usr/bin/git log -1 --format=%H
+apply-pack-staging	Checkout Pack Source	2026-01-27T05:01:31.0147768Z 566720f273604ee592d0caff8d0a75f63202f1e5
+apply-pack-staging	Apply AgentOps Pack (staging)	﻿2026-01-27T05:01:31.0291208Z ##[group]Run ./_pack/.github/actions/apply-pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0291580Z with:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0291792Z   repo: dhar174/langgraph_system_generator
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0292277Z   llm_token: ***
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0292476Z   pack_version: 0.1.0
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0292698Z   pack_root: _pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0292918Z   config_path: .github/agentops-pack.yml
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0293180Z   apply: true
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0293469Z   override_token: ***
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0293688Z   permissions_mode: default
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0293899Z   strict: false
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.0294094Z ##[endgroup]
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1933288Z Config file not found at .github/agentops-pack.yml; continuing with inputs + defaults.
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1941868Z --- Phase 1: Sensing Repository ---
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1973403Z Detected signals: {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1973926Z   "languages": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1974310Z     "python"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1974618Z   ],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1974914Z   "frameworks": [],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1975389Z   "packageManagers": [],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1975797Z   "buildTools": [],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1976172Z   "isMonorepo": false,
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1976552Z   "hasTestFolder": true,
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1976969Z   "hasDocsFolder": true
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1977599Z }
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1977916Z Existing AI Config: {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1978328Z   "hasCopilotInstructions": true,
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1978801Z   "instructionFiles": [],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1979191Z   "agentFiles": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1979552Z     "lnf-cli.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1979946Z     "lnf-docs.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1980390Z     "lnf-foundation.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1980860Z     "lnf-generator.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1981310Z     "lnf-lead.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1981733Z     "lnf-notebook.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1982186Z     "lnf-patterns.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1982630Z     "lnf-qa.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1983016Z     "lnf-rag.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1983413Z     "lnf-security.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1983862Z     "lnf-webui.agent.md"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1984238Z   ],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1984562Z   "promptFiles": [],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1984939Z   "hasMcpConfig": false
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1985311Z }
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:31.1986194Z --- Phase 2: Planning (Agentic) ---
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6650972Z Generated Plan: {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6651804Z   "repoProfile": {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6653453Z     "purpose": "The repository contains a system generator for LangGraph, likely supporting various patterns like router, QA, and RAG, along with CLI and notebook functionality.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6655758Z     "stack": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6656288Z       "python"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6656816Z     ],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6657668Z     "commands": {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6658362Z       "build": "python setup.py build",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6659068Z       "test": "pytest tests"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6659636Z     }
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6670408Z   },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6670721Z   "selection": {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6671115Z     "basePack": true,
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6671473Z     "stackPacks": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6671815Z       "python"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6672116Z     ],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6672396Z     "components": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6672716Z       "copilot",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6673040Z       "agents",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6673339Z       "docs",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6673643Z       "decision-log"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6673969Z     ]
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6674220Z   },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6674490Z   "files": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6674773Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6675120Z       "path": ".github/copilot-instructions.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6675618Z       "action": "create",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6676216Z       "reason": "Necessary for Copilot guidance and is missing from the repo.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6676920Z       "templateId": "copilot-instructions"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6677578Z     },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6677845Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6678200Z       "path": ".github/agents/planner.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6679120Z       "action": "create",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6679697Z       "reason": "Planner agent missing and required to execute planning tasks.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6680385Z       "templateId": "planner-agent"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6680795Z     },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6681072Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6681431Z       "path": ".github/agents/implementer.agent.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6681917Z       "action": "create",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6682474Z       "reason": "Implementer agent missing and needed for task execution.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6683141Z       "templateId": "implementer-agent"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6683569Z     },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6683848Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6684159Z       "path": "repo-profile.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6684559Z       "action": "update",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6685153Z       "reason": "Repo profile exists but must align with the standardized format.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6685857Z       "templateId": "repo-profile"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6686268Z     },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6686545Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6686887Z       "path": "_pack/mcp.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6687455Z       "action": "create",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6688077Z       "reason": "MCP configuration is not present and is essential for agent coherence.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6688771Z       "templateId": "mcp"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6689117Z     },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6689382Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6689697Z       "path": "_pack/decision-log.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6690145Z       "action": "update",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6690734Z       "reason": "Decision log exists but needs to conform to the AgentOps format.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6691430Z       "templateId": "decision-log"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6691842Z     },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6692105Z     {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6692410Z       "path": "_pack/AGENTS.md",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6692803Z       "action": "update",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6693381Z       "reason": "AGENTS.md exists but needs alignment with AgentOps standards.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6694022Z       "templateId": "agents-index"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6694469Z     }
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6694802Z   ],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6695093Z   "managedPolicy": {
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6695569Z     "marker": "<!-- agentops-managed: true -->",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6696148Z     "blockStart": "<!-- BEGIN: agentops-managed -->",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6697035Z     "blockEnd": "<!-- END: agentops-managed -->"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6697712Z   },
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6698030Z   "acceptanceCriteria": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6698624Z     "The repository should include a standardized repo profile file.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6699556Z     "Core AgentOps files such as AGENTS.md, MCP, and decision-log are updated or added.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6700609Z     "GitHub Copilot instructions must be implemented for developer guidance.",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6701635Z     "Planner and implementer agents must be present to support the project's operational needs."
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6702430Z   ],
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6702724Z   "questions": [
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6703585Z     "What additional components (e.g., RAG integration) are critical for this repository from an AgentOps perspective?",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6704964Z     "Does the repository require any specialized prompts for tasks like CLI or notebook enhancements?",
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6706105Z     "Are there existing guidelines or policies that agents should be aligned with?"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6706799Z   ]
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6707076Z }
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6735955Z ##[warning]No source files found for component skills
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6821694Z ##[warning].github/copilot-instructions.md: No managed markers present; skipping file to avoid overwrites.
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6822968Z Apply mode: managed sections updated for selected files.
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6823348Z Change summary: added=14, updated=0, unchanged=0, skipped=1
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6876276Z [command]/usr/bin/git config user.name github-actions[bot]
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.6953550Z [command]/usr/bin/git config user.email github-actions[bot]@users.noreply.github.com
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7004920Z [command]/usr/bin/git remote set-url origin ***github.com/dhar174/langgraph_system_generator.git
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7059288Z [command]/usr/bin/git checkout -B agentops/pack-0.1.0
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7813627Z Switched to a new branch 'agentops/pack-0.1.0'
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7832682Z [command]/usr/bin/git add .
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7885264Z warning: adding embedded git repository: _pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7886062Z hint: You've added another git repository inside your current repository.
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7886724Z hint: Clones of the outer repository will not contain the contents of
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7887440Z hint: the embedded repository and will not know how to obtain it.
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7887857Z hint: If you meant to add a submodule, use:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7888131Z hint:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7888317Z hint: 	git submodule add <url> _pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7888554Z hint:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7888814Z hint: If you added this path by mistake, you can remove it from the
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7889166Z hint: index with:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7889332Z hint:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7889535Z hint: 	git rm --cached _pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7889747Z hint:
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7889953Z hint: See "git help submodule" for more information.
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7890361Z hint: Disable this message with "git config set advice.addEmbeddedRepo false"
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.7923728Z [command]/usr/bin/git status --porcelain
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8118223Z A  .github/agents/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8118799Z A  .github/agents/specsmd-construction-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8119205Z A  .github/agents/specsmd-inception-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8119541Z A  .github/agents/specsmd-master-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8119892Z A  .github/agents/specsmd-operations-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8120199Z A  .github/instructions/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8120445Z A  .github/prompts/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8120668Z A  _pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8120840Z A  decision-log.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8121063Z A  docs/context/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8121280Z A  docs/memory/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8121482Z A  docs/specs/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8121716Z A  docs/specs/agent_builder_first_intent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8122207Z A  mcp.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8122374Z A  repo-profile.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8134774Z [command]/usr/bin/git commit -m chore(agentops): apply pack 0.1.0
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8219001Z [agentops/pack-0.1.0 bb40d57] chore(agentops): apply pack 0.1.0
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8219799Z  15 files changed, 1224 insertions(+)
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8220258Z  create mode 100644 .github/agents/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8220673Z  create mode 100644 .github/agents/specsmd-construction-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8221131Z  create mode 100644 .github/agents/specsmd-inception-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8221579Z  create mode 100644 .github/agents/specsmd-master-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8222022Z  create mode 100644 .github/agents/specsmd-operations-agent.agent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8222437Z  create mode 100644 .github/instructions/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8222753Z  create mode 100644 .github/prompts/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8223040Z  create mode 160000 _pack
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8223273Z  create mode 100644 decision-log.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8223550Z  create mode 100644 docs/context/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8223828Z  create mode 100644 docs/memory/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8224095Z  create mode 100644 docs/specs/README.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8224428Z  create mode 100644 docs/specs/agent_builder_first_intent.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8224759Z  create mode 100644 mcp.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8224995Z  create mode 100644 repo-profile.md
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:39.8234677Z [command]/usr/bin/git push -f origin agentops/pack-0.1.0
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:40.5014905Z remote: 
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:40.5016421Z remote: GitHub found 2 vulnerabilities on dhar174/langgraph_system_generator's default branch (2 high). To find out more, visit:        
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:40.5018740Z remote:      https://github.com/dhar174/langgraph_system_generator/security/dependabot        
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:40.5019672Z remote: 
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:40.5021685Z To https://github.com/dhar174/langgraph_system_generator.git
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:40.5022864Z  + 6781b38...bb40d57 agentops/pack-0.1.0 -> agentops/pack-0.1.0 (forced update)
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:41.7825166Z PR Governance: Updated PR #104 (https://github.com/dhar174/langgraph_system_generator/pull/104)
+apply-pack-staging	Apply AgentOps Pack (staging)	2026-01-27T05:01:41.7832345Z Pack applier configuration ready for dhar174/langgraph_system_generator
+apply-pack-staging	Show outputs	﻿2026-01-27T05:01:41.7978636Z ##[group]Run echo "PR #: 104"
+apply-pack-staging	Show outputs	2026-01-27T05:01:41.7978948Z [36;1mecho "PR #: 104"[0m
+apply-pack-staging	Show outputs	2026-01-27T05:01:41.7979352Z [36;1mecho "PR URL: https://github.com/dhar174/langgraph_system_generator/pull/104"[0m
+apply-pack-staging	Show outputs	2026-01-27T05:01:41.8015556Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+apply-pack-staging	Show outputs	2026-01-27T05:01:41.8015902Z ##[endgroup]
+apply-pack-staging	Show outputs	2026-01-27T05:01:41.8086885Z PR #: 104
+apply-pack-staging	Show outputs	2026-01-27T05:01:41.8087569Z PR URL: https://github.com/dhar174/langgraph_system_generator/pull/104
+apply-pack-staging	Post Checkout Pack Source	﻿2026-01-27T05:01:41.8162540Z Post job cleanup.
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9092757Z [command]/usr/bin/git version
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9128812Z git version 2.52.0
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9172817Z Temporarily overriding HOME='/home/runner/work/_temp/6980e560-a2dd-4f13-8fc6-92d928fe584c' before making global git config changes
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9174177Z Adding repository directory to the temporary git global config as a safe directory
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9179736Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder/_pack
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9215140Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9246988Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9476898Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9498389Z http.https://github.com/.extraheader
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9510823Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9540834Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9765612Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+apply-pack-staging	Post Checkout Pack Source	2026-01-27T05:01:41.9795799Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+apply-pack-staging	Post Checkout Target Repo	﻿2026-01-27T05:01:42.0140116Z Post job cleanup.
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1083663Z [command]/usr/bin/git version
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1135893Z git version 2.52.0
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1201182Z Temporarily overriding HOME='/home/runner/work/_temp/da1fbf97-b36d-4b6e-8919-6ab8116284d6' before making global git config changes
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1202989Z Adding repository directory to the temporary git global config as a safe directory
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1210126Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/custom_github_copilot_agent_builder/custom_github_copilot_agent_builder
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1260449Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1300142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1539094Z fatal: No url found for submodule path '_pack' in .gitmodules
+apply-pack-staging	Post Checkout Target Repo	2026-01-27T05:01:42.1566533Z ##[warning]The process '/usr/bin/git' failed with exit code 128
+apply-pack-staging	Complete job	﻿2026-01-27T05:01:42.1654694Z Cleaning up orphan processes
