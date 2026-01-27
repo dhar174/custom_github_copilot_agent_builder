@@ -45,6 +45,7 @@ const source_1 = require("./pack/source");
 const summary_1 = require("./pr/summary");
 const update_1 = require("./pr/update");
 const snapshot_1 = require("./sense/snapshot");
+const planner_1 = require("./plan/planner");
 const DEFAULTS = {
     components: [],
     apply: false,
@@ -133,6 +134,23 @@ async function run() {
         const snapshot = await (0, snapshot_1.createSnapshot)(process.cwd(), mergeResult.config.repo, 'main');
         core.info(`Detected signals: ${JSON.stringify(snapshot.signals, null, 2)}`);
         core.info(`Existing AI Config: ${JSON.stringify(snapshot.aiConfig, null, 2)}`);
+        // --- Phase 2: Plan ---
+        core.info('--- Phase 2: Planning (Agentic) ---');
+        const llmToken = core.getInput('llm_token') || process.env.GH_PAT || process.env.GITHUB_TOKEN; // Github Models usually needs PAT or GITHUB_TOKEN if enabled
+        const planner = new planner_1.Planner(llmToken || '', 'gpt-4o');
+        let plan;
+        try {
+            if (!process.env.SKIP_LLM) { // Escape hatch for tests/stubbing
+                plan = await planner.generatePlan(snapshot);
+                core.info(`Generated Plan: ${JSON.stringify(plan, null, 2)}`);
+            }
+            else {
+                core.info('Skipping LLM (SKIP_LLM set), using static legacy plan.');
+            }
+        }
+        catch (e) {
+            core.warning(`LLM Planning failed: ${e instanceof Error ? e.message : String(e)}. Falling back to static templates.`);
+        }
         mergeResult.warnings.forEach((w) => {
             core.warning(`Warning (${w.code}): ${w.field}`);
         });
