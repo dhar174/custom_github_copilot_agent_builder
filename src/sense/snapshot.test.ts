@@ -62,7 +62,7 @@ describe('createSnapshot', () => {
       writeFileSync(path.join(root, '.github', 'copilot-instructions.md'), '# hi');
       mkdirSync(path.join(root, 'a'));
       mkdirSync(path.join(root, 'a', 'b'));
-      mkdirSync(path.join(root, 'a', 'b', 'c')); // should be trimmed
+      mkdirSync(path.join(root, 'a', 'b', 'c')); // should be trimmed entirely
     });
 
     const snap = await createSnapshot(repo, 'owner/repo', 'main');
@@ -92,5 +92,18 @@ describe('createSnapshot', () => {
       expect.arrayContaining(['chat.prompt.md', 'release.prompt.yaml', path.join('agentic-eval', 'SKILL.md')])
     );
     expect(snap.signals.riskFlags).toEqual(expect.arrayContaining(['tool-versions', 'node-version-file']));
+  });
+
+  test('flags protected branch workflows as risk', async () => {
+    const repo = makeRepo(root => {
+      mkdirSync(path.join(root, '.github'));
+      mkdirSync(path.join(root, '.github', 'workflows'));
+      writeFileSync(path.join(root, '.github', 'workflows', 'branch-protection.yml'), 'name: Branch Protection');
+    });
+
+    const snap = await createSnapshot(repo, 'owner/repo', 'main');
+    expect(snap.signals.riskFlags).toEqual(
+      expect.arrayContaining(['ci-workflows', 'protected-branches-workflow'])
+    );
   });
 });

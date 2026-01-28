@@ -35,6 +35,10 @@ function buildTree(currentPath: string, depth: number, maxDepth: number): Direct
     }
 
     if (stat.isDirectory()) {
+      if (depth >= maxDepth) {
+        // Do not descend or include nodes beyond the max depth
+        continue;
+      }
       nodes.push({
         name: item,
         type: 'directory',
@@ -137,7 +141,15 @@ function detectSignals(rootPath: string): RepoSignals {
   if (exists(path.join(rootPath, 'test')) || exists(path.join(rootPath, 'tests'))) signals.hasTestFolder = true;
   if (exists(path.join(rootPath, 'docs'))) signals.hasDocsFolder = true;
 
-  if (exists(workflowsDir)) signals.riskFlags.push('ci-workflows');
+  if (exists(workflowsDir)) {
+    signals.riskFlags.push('ci-workflows');
+    const workflowFiles = readDirSafe(workflowsDir);
+    const hasBranchProtection = workflowFiles.some(file => {
+      const lower = file.toLowerCase();
+      return lower.includes('branch') && lower.includes('protect');
+    });
+    if (hasBranchProtection) signals.riskFlags.push('protected-branches-workflow');
+  }
   if (exists(toolVersions)) signals.riskFlags.push('tool-versions');
   if (exists(nvmrc)) signals.riskFlags.push('node-version-file');
 
@@ -213,11 +225,22 @@ function detectConventions(rootPath: string): ExistingConventions {
   };
 }
 
+function sortNodes(nodes: DirectoryNode[]): DirectoryNode[] {
+  return nodes
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(node =>
+      node.type === 'directory' && node.children
+        ? { ...node, children: sortNodes(node.children) }
+        : node
+    );
+}
+
 export async function createSnapshot(rootPath: string, repo: string, defaultBranch: string): Promise<RepoSnapshot> {
+  const structure = sortNodes(buildTree(rootPath, 0, 2));
   return {
     repoName: repo,
     defaultBranch,
-    structure: buildTree(rootPath, 0, 2),
+    structure,
     signals: detectSignals(rootPath),
     aiConfig: detectAiConfig(rootPath),
     conventions: detectConventions(rootPath),
