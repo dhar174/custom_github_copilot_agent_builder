@@ -1,4 +1,5 @@
 export type ApplyMode = 'dry-run' | 'apply';
+export type ApplyStrategy = 'safe' | 'refresh' | 'overwrite';
 
 export interface ManagedSection {
   id: string;
@@ -13,7 +14,7 @@ export interface PackFile {
 
 export interface ApplyOptions {
   mode: ApplyMode;
-  refreshOnly?: boolean;
+  strategy?: ApplyStrategy; // default: refresh
   lineEnding?: 'lf' | 'crlf';
 }
 

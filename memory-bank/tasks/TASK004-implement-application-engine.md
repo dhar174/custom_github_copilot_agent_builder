@@ -1,6 +1,6 @@
 # [TASK004] - Implement Application Engine
 
-**Status:** Pending
+**Status:** In Progress
 **Added:** 2026-01-27
 **Updated:** 2026-01-27
 
@@ -19,17 +19,18 @@ This engine is responsible for the side-effects. It must be safe (AC-3, FR-8). T
 
 ## Progress Tracking
 
-**Overall Status:** Pending - 0%
+**Overall Status:** In Progress - 40%
 
 ### Subtasks
 | ID | Description | Status | Updated | Notes |
 |----|-------------|--------|---------|-------|
-| 4.1 | Managed Block Logic (TASK-011) | Pending | 2026-01-27 | |
-| 4.2 | File Generation Engine (TASK-012) | Pending | 2026-01-27 | |
+| 4.1 | Managed Block Logic (TASK-011) | In Progress | 2026-01-27 | Strategy handling safe/refresh/overwrite added |
+| 4.2 | File Generation Engine (TASK-012) | In Progress | 2026-01-27 | applyPackFiles strategies + tests |
 | 4.3 | PR Creation Logic (TASK-013) | Pending | 2026-01-27 | |
 | 4.4 | PR Summary Logic (TASK-014) | Pending | 2026-01-27 | |
-| 4.5 | Idempotence & Payload Tests (TASK-015) | Pending | 2026-01-27 | |
+| 4.5 | Idempotence & Payload Tests (TASK-015) | In Progress | 2026-01-27 | Added safe/overwrite coverage |
 
 ## Progress Log
 ### 2026-01-27
 - Task file created.
+- Added apply strategy support (safe/refresh/overwrite) with tests; marked task in progress.

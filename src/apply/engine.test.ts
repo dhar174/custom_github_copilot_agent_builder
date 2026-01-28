@@ -14,7 +14,7 @@ describe('applyPackFiles', () => {
     const result = applyPackFiles(
       dir,
       [{ path: 'docs/alpha.md', content: 'alpha content', managedId: 'alpha' }],
-      { mode: 'apply' },
+      { mode: 'apply', strategy: 'refresh' },
     );
 
     expect(result.summary.added).toBe(1);
@@ -26,7 +26,7 @@ describe('applyPackFiles', () => {
     const result = applyPackFiles(
       dir,
       [{ path: 'docs/beta.md', content: 'beta content', managedId: 'beta' }],
-      { mode: 'dry-run' },
+      { mode: 'dry-run', strategy: 'refresh' },
     );
 
     expect(result.summary.added).toBe(1);
@@ -42,10 +42,42 @@ describe('applyPackFiles', () => {
     const result = applyPackFiles(
       dir,
       [{ path: 'docs/gamma.md', content: 'new content', managedId: 'gamma' }],
-      { mode: 'dry-run' },
+      { mode: 'dry-run', strategy: 'refresh' },
     );
 
     expect(result.summary.skipped).toBe(1);
     expect(result.noChanges).toBe(true);
+  });
+
+  it('skips existing files in safe mode', () => {
+    const dir = createTempDir();
+    const target = path.join(dir, 'docs/delta.md');
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, 'existing', 'utf8');
+
+    const result = applyPackFiles(
+      dir,
+      [{ path: 'docs/delta.md', content: 'new content', managedId: 'delta' }],
+      { mode: 'apply', strategy: 'safe' },
+    );
+
+    expect(result.summary.skipped).toBe(1);
+    expect(fs.readFileSync(target, 'utf8')).toBe('existing');
+  });
+
+  it('overwrites content in overwrite mode', () => {
+    const dir = createTempDir();
+    const target = path.join(dir, 'docs/eps.md');
+    fs.mkdirSync(path.dirname(target), { recursive: true });
+    fs.writeFileSync(target, 'old', 'utf8');
+
+    const result = applyPackFiles(
+      dir,
+      [{ path: 'docs/eps.md', content: 'new', managedId: 'eps' }],
+      { mode: 'apply', strategy: 'overwrite' },
+    );
+
+    expect(result.summary.updated).toBe(1);
+    expect(fs.readFileSync(target, 'utf8')).toBe('new');
   });
 });

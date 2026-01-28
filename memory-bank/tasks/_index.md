@@ -2,6 +2,7 @@
 
 ## In Progress
 - [TASK002] Implement Sensing Engine (`src/sense/`) - GOAL-001 (Plan tasks 001-005)
+- [TASK004] Implement Application Engine (`src/apply/` & `src/pr/`) - GOAL-003 (Plan tasks 011-015)
 
 ## Pending
 - [TASK004] Implement Application Engine (`src/apply/` & `src/pr/`) - GOAL-003 (Plan tasks 011-015)
