@@ -1,19 +1,18 @@
 # Progress
 
 ## Status Overview
-**Current Status**: Initialization / Foundation Building
-**Completion**: ~22%
+**Current Status**: Core Implementation (Sense/Plan)
+**Completion**: ~35%
 
 ## What Works
 -   [x] Project skeleton and directory structure.
 -   [x] Core Specification (`docs/specs/agent_builder_first_intent.md`).
 -   [x] Agent Instructions (`.github/instructions/`).
 -   [x] Memory Bank Structure (Foundational files created).
-- [~] Sensing Engine (GOAL-001; partially implemented in `src/sense/snapshot.ts`).
+-   [x] Sensing Engine (GOAL-001; deterministic snapshot with tests).
+-   [x] Planning Engine (GOAL-002; planner with LLM+fallback, validation, tests).
 
 ## What's Left to Build
-- [ ] **Sensing Engine**: Final tidy-up/edge cases; core signals and tests in place.
--   [ ] **Planning Engine**: Logic (LLM or heuristic) to convert `RepoSnapshot` -> `PlanManifest`.
 -   [ ] **Packing Engine**: Template system and specialization logic -> `FileBundle`.
 -   [ ] **Application Engine**: PR creation, semantic diffing, and managed block merging.
 -   [ ] **GitHub Action Wrapper**: `action.yml` and final `dist/` build.
