@@ -55,6 +55,34 @@ Path-specific instructions:
 4. **Update Regularly**: Keep instructions current with code changes
 5. **Avoid Duplication**: Don't repeat repo-wide instructions
 
+## Available Instruction Files
+
+| File | Description |
+|------|-------------|
+| [agent-skills.instructions.md](agent-skills.instructions.md) | Guidelines for creating high-quality Agent Skills for GitHub Copilot |
+| [agents.instructions.md](agents.instructions.md) | Guidelines for creating custom agent files for GitHub Copilot |
+| [code-review-generic.instructions.md](code-review-generic.instructions.md) | Generic code review instructions that can be customized for any project |
+| [codexer.instructions.md](codexer.instructions.md) | Advanced Python research assistant with Context 7 MCP integration |
+| [containerization-docker-best-practices.instructions.md](containerization-docker-best-practices.instructions.md) | Best practices for creating optimized, secure Docker images and containers |
+| [copilot-sdk-nodejs.instructions.md](copilot-sdk-nodejs.instructions.md) | Guidance on building Node.js/TypeScript applications using GitHub Copilot SDK |
+| [copilot-sdk-python.instructions.md](copilot-sdk-python.instructions.md) | Guidance on building Python applications using GitHub Copilot SDK |
+| [copilot-thought-logging.instructions.md](copilot-thought-logging.instructions.md) | Process tracking instructions for Copilot with editable workflow documentation |
+| [genaiscript.instructions.md](genaiscript.instructions.md) | AI-powered script generation guidelines |
+| [github-actions-ci-cd-best-practices.instructions.md](github-actions-ci-cd-best-practices.instructions.md) | Comprehensive CI/CD pipeline best practices using GitHub Actions |
+| [instructions.instructions.md](instructions.instructions.md) | Guidelines for creating high-quality custom instruction files |
+| [langchain-python.instructions.md](langchain-python.instructions.md) | Instructions for using LangChain with Python |
+| [markdown.instructions.md](markdown.instructions.md) | Documentation and content creation standards |
+| [memory-bank.instructions.md](memory-bank.instructions.md) | Memory Bank system for persistent project context and knowledge |
+| [performance-optimization.instructions.md](performance-optimization.instructions.md) | Comprehensive performance optimization for all languages and frameworks |
+| [prompt.instructions.md](prompt.instructions.md) | Guidelines for creating high-quality prompt files |
+| [shell.instructions.md](shell.instructions.md) | Shell scripting best practices and conventions |
+| [spec-driven-workflow-v1.instructions.md](spec-driven-workflow-v1.instructions.md) | Specification-Driven Workflow for structured software development |
+| [taming-copilot.instructions.md](taming-copilot.instructions.md) | Guidelines to keep Copilot under control and prevent unwanted changes |
+| [task-implementation.instructions.md](task-implementation.instructions.md) | Instructions for implementing task plans with progressive tracking |
+| [tasksync.instructions.md](tasksync.instructions.md) | TaskSync V4 - Terminal-based task management for continuous agent operation |
+| [update-code-from-shorthand.instructions.md](update-code-from-shorthand.instructions.md) | Update code files from shorthand notation |
+| [update-docs-on-code-change.instructions.md](update-docs-on-code-change.instructions.md) | Automatically update documentation when application code changes |
+
 ## Creating New Instructions
 
 When adding path-specific instructions:

@@ -40,6 +40,13 @@ Testing approach and requirements.
 Related documents and resources.
 ```
 
+## Available Specifications
+
+| Specification | Description |
+|---------------|-------------|
+| [agent_builder_first_intent.md](agent_builder_first_intent.md) | Initial intent and vision for the agent builder framework |
+| [spec-architecture-agent-builder.md](spec-architecture-agent-builder.md) | Architectural specification for the agent builder system |
+
 ## Contributing
 
 When adding new specifications:
