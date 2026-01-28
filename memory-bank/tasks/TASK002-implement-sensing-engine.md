@@ -19,15 +19,15 @@ The Sensing Engine is the foundation of the agent's decision making. It must be 
 
 ## Progress Tracking
 
-**Overall Status:** In Progress - 70%
+**Overall Status:** In Progress - 90%
 
 ### Subtasks
 | ID | Description | Status | Updated | Notes |
 |----|-------------|--------|---------|-------|
 | 2.1 | Refine Types (TASK-001) | Completed | 2026-01-27 | Added riskFlags to RepoSignals |
 | 2.2 | Directory Traversal (TASK-002) | Completed | 2026-01-27 | Deterministic ordering; skip only .git |
-| 2.3 | Signal Detection (TASK-003) | In Progress | 2026-01-27 | Added package manager/build tool detection |
-| 2.4 | AI Config Detection (TASK-004) | In Progress | 2026-01-27 | Captures .prompt.yml/.yaml and top-level prompts |
+| 2.3 | Signal Detection (TASK-003) | Completed | 2026-01-27 | Added package manager/build tool/workflows/monorepo flags |
+| 2.4 | AI Config Detection (TASK-004) | Completed | 2026-01-27 | Captures .prompt.yml/.yaml, root prompts, skills SKILL.md |
 | 2.5 | Unit Tests (TASK-005) | Completed | 2026-01-27 | Determinism, depth limit, AI config prompts |
 
 ## Progress Log

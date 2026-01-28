@@ -30,6 +30,7 @@ describe('createSnapshot', () => {
       writeFileSync(path.join(root, 'pnpm-lock.yaml'), 'lockfileVersion: 9');
       writeFileSync(path.join(root, 'tsconfig.json'), '{}');
       mkdirSync(path.join(root, '.github'));
+      mkdirSync(path.join(root, '.github', 'workflows'));
       writeFileSync(path.join(root, '.prompt.yml'), 'name: sample');
       writeFileSync(path.join(root, '.gitignore'), 'node_modules');
       mkdirSync(path.join(root, '.git')); // should be ignored
@@ -49,7 +50,7 @@ describe('createSnapshot', () => {
     expect(snap1.signals.frameworks).toContain('react');
     expect(snap1.signals.buildTools).toEqual(expect.arrayContaining(['tsc']));
     expect(snap1.signals.isMonorepo).toBe(true);
-    expect(snap1.signals.riskFlags).toContain('monorepo-structure');
+    expect(snap1.signals.riskFlags).toEqual(expect.arrayContaining(['monorepo-structure', 'ci-workflows']));
     expect(snap1.signals.hasTestFolder).toBe(true);
     expect(snap1.signals.hasDocsFolder).toBe(true);
     expect(snap1.aiConfig.promptFiles).toEqual(expect.arrayContaining(['.prompt.yml']));
@@ -79,11 +80,17 @@ describe('createSnapshot', () => {
       mkdirSync(path.join(root, '.github', 'prompts'));
       writeFileSync(path.join(root, '.github', 'prompts', 'chat.prompt.md'), '---\nname: chat\n---');
       writeFileSync(path.join(root, 'release.prompt.yaml'), 'name: release');
+      mkdirSync(path.join(root, '.github', 'skills'));
+      mkdirSync(path.join(root, '.github', 'skills', 'agentic-eval'));
+      writeFileSync(path.join(root, '.github', 'skills', 'agentic-eval', 'SKILL.md'), '# skill');
+      writeFileSync(path.join(root, '.tool-versions'), 'nodejs 20.10.0');
+      writeFileSync(path.join(root, '.nvmrc'), '18');
     });
 
     const snap = await createSnapshot(repo, 'owner/repo', 'main');
     expect(snap.aiConfig.promptFiles).toEqual(
-      expect.arrayContaining(['chat.prompt.md', 'release.prompt.yaml'])
+      expect.arrayContaining(['chat.prompt.md', 'release.prompt.yaml', path.join('agentic-eval', 'SKILL.md')])
     );
+    expect(snap.signals.riskFlags).toEqual(expect.arrayContaining(['tool-versions', 'node-version-file']));
   });
 });

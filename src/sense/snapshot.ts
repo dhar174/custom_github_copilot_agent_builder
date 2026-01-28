@@ -67,11 +67,15 @@ function detectSignals(rootPath: string): RepoSignals {
   const lockYarn = path.join(rootPath, 'yarn.lock');
   const lockNpm = path.join(rootPath, 'package-lock.json');
   const lockBun = path.join(rootPath, 'bun.lockb');
+  const pyproject = path.join(rootPath, 'pyproject.toml');
+  const toolVersions = path.join(rootPath, '.tool-versions');
+  const nvmrc = path.join(rootPath, '.nvmrc');
+  const workflowsDir = path.join(rootPath, '.github', 'workflows');
 
   // Basic Language Detection
   if (exists(pkgJsonPath)) signals.languages.push('typescript/javascript');
   if (exists(path.join(rootPath, 'tsconfig.json'))) signals.languages.push('typescript');
-  if (exists(path.join(rootPath, 'requirements.txt')) || exists(path.join(rootPath, 'pyproject.toml'))) signals.languages.push('python');
+  if (exists(path.join(rootPath, 'requirements.txt')) || exists(pyproject)) signals.languages.push('python');
   if (exists(path.join(rootPath, 'go.mod'))) signals.languages.push('go');
   if (exists(path.join(rootPath, 'pom.xml')) || exists(path.join(rootPath, 'build.gradle'))) signals.languages.push('java');
 
@@ -81,6 +85,16 @@ function detectSignals(rootPath: string): RepoSignals {
   if (exists(lockNpm)) signals.packageManagers.push('npm');
   if (exists(lockBun)) signals.packageManagers.push('bun');
   if (signals.packageManagers.length === 0 && exists(pkgJsonPath)) signals.packageManagers.push('npm');
+  // Python managers from pyproject
+  if (exists(pyproject)) {
+    try {
+      const content = fs.readFileSync(pyproject, 'utf8');
+      if (content.includes('[tool.poetry]')) signals.packageManagers.push('poetry');
+      if (content.includes('[tool.pdm]')) signals.packageManagers.push('pdm');
+    } catch {
+      /* ignore */
+    }
+  }
 
   // Framework & build tool detection via package.json
   if (exists(pkgJsonPath)) {
@@ -123,6 +137,17 @@ function detectSignals(rootPath: string): RepoSignals {
   if (exists(path.join(rootPath, 'test')) || exists(path.join(rootPath, 'tests'))) signals.hasTestFolder = true;
   if (exists(path.join(rootPath, 'docs'))) signals.hasDocsFolder = true;
 
+  if (exists(workflowsDir)) signals.riskFlags.push('ci-workflows');
+  if (exists(toolVersions)) signals.riskFlags.push('tool-versions');
+  if (exists(nvmrc)) signals.riskFlags.push('node-version-file');
+
+  // Sort for determinism
+  signals.languages = Array.from(new Set(signals.languages)).sort();
+  signals.frameworks = Array.from(new Set(signals.frameworks)).sort();
+  signals.packageManagers = Array.from(new Set(signals.packageManagers)).sort();
+  signals.buildTools = Array.from(new Set(signals.buildTools)).sort();
+  signals.riskFlags = Array.from(new Set(signals.riskFlags)).sort();
+
   return signals;
 }
 
@@ -131,6 +156,7 @@ function detectAiConfig(rootPath: string): ExistingAiConfig {
   const instructionsDir = path.join(githubDir, 'instructions');
   const agentsDir = path.join(githubDir, 'agents');
   const promptsDir = path.join(githubDir, 'prompts');
+  const skillsDir = path.join(githubDir, 'skills');
   const rootFiles = readDirSafe(rootPath);
 
   const config: ExistingAiConfig = {
@@ -154,6 +180,26 @@ function detectAiConfig(rootPath: string): ExistingAiConfig {
   // also capture top-level GitHub Models prompts (common pattern)
   const promptYamls = rootFiles.filter(f => f.endsWith('.prompt.yml') || f.endsWith('.prompt.yaml'));
   config.promptFiles.push(...promptYamls);
+
+  if (exists(skillsDir)) {
+    const skillDirs = readDirSafe(skillsDir).sort();
+    for (const dir of skillDirs) {
+      const full = path.join(skillsDir, dir);
+      try {
+        const stat = fs.statSync(full);
+        if (!stat.isDirectory()) continue;
+        const skillFiles = readDirSafe(full).filter(f => f === 'SKILL.md').map(f => path.join(dir, f));
+        config.promptFiles.push(...skillFiles);
+      } catch {
+        continue;
+      }
+    }
+  }
+
+  // ensure deterministic ordering
+  config.instructionFiles = Array.from(new Set(config.instructionFiles)).sort();
+  config.agentFiles = Array.from(new Set(config.agentFiles)).sort();
+  config.promptFiles = Array.from(new Set(config.promptFiles)).sort();
 
   return config;
 }

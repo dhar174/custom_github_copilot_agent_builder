@@ -2,7 +2,7 @@
 
 ## Status Overview
 **Current Status**: Initialization / Foundation Building
-**Completion**: ~18%
+**Completion**: ~22%
 
 ## What Works
 -   [x] Project skeleton and directory structure.
@@ -12,7 +12,7 @@
 - [~] Sensing Engine (GOAL-001; partially implemented in `src/sense/snapshot.ts`).
 
 ## What's Left to Build
-- [ ] **Sensing Engine**: Finalize signal completeness and edge cases (tests in place).
+- [ ] **Sensing Engine**: Final tidy-up/edge cases; core signals and tests in place.
 -   [ ] **Planning Engine**: Logic (LLM or heuristic) to convert `RepoSnapshot` -> `PlanManifest`.
 -   [ ] **Packing Engine**: Template system and specialization logic -> `FileBundle`.
 -   [ ] **Application Engine**: PR creation, semantic diffing, and managed block merging.
