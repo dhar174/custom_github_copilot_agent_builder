@@ -2,7 +2,7 @@
 
 ## Status Overview
 **Current Status**: Core Implementation (Sense/Plan)
-**Completion**: ~40%
+**Completion**: ~50%
 
 ## What Works
 -   [x] Project skeleton and directory structure.
@@ -14,7 +14,7 @@
 
 ## What's Left to Build
 -   [ ] **Packing Engine**: Template system and specialization logic -> `FileBundle`.
--   [ ] **Application Engine**: PR creation, semantic diffing, and managed block merging (apply strategies in progress).
+-   [ ] **Application Engine**: PR creation, semantic diffing, and managed block merging (apply strategies in progress; PR upsert and summary stability tests added).
 -   [ ] **GitHub Action Wrapper**: `action.yml` and final `dist/` build.
 -   [ ] **Tests**: Comprehensive unit and integration tests for each stage.
 

@@ -207,7 +207,7 @@ async function run(): Promise<void> {
 
     const applyResult = applyPackFiles(process.cwd(), source.files, {
       mode: summary.apply ? 'apply' : 'dry-run',
-      refreshOnly: true,
+      strategy: 'refresh',
     });
 
     applyResult.warnings.forEach((warning) => core.warning(warning));

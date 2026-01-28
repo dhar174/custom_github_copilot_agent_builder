@@ -1,6 +1,6 @@
 import { ApplyResult, ApplyChange } from '../apply/types';
 import { PackManifest } from '../pack/manifest';
-import { sortFileList } from './stability';
+import { sortFileList, sortMapKeys } from './stability';
 
 export interface PrBodyContext {
   runId: number | string;
@@ -29,7 +29,8 @@ export function buildPrBody(
   // Signals section (FR-10.2)
   let signalsSection = '';
   if (context.signals && Object.keys(context.signals).length > 0) {
-    const items = Object.entries(context.signals)
+    const sortedSignals = sortMapKeys(context.signals);
+    const items = Object.entries(sortedSignals)
       .map(([k, v]) => `- **${k}**: ${v}`)
       .join('\n');
     signalsSection = `### Detected Signals\n${items}\n`;

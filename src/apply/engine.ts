@@ -41,18 +41,42 @@ export function applyPackFiles(
     }
 
     // refresh mode (default)
-    const { content, status, reason } = applyManagedSections(
-      existing,
-      [{ id: file.managedId ?? file.path, content: file.content }],
-      { refreshOnly: true },
-    );
-
-    changes.push({ path: file.path, status, reason });
-
-    if ((status === 'updated' || status === 'added') && options.mode === 'apply') {
-      fs.mkdirSync(path.dirname(targetPath), { recursive: true });
-      fs.writeFileSync(targetPath, formatLineEndings(content, lineEnding), 'utf8');
+    if (!existing) {
+      changes.push({ path: file.path, status: 'added' });
+      if (options.mode === 'apply') {
+        fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+        const managedContent = file.managedId
+          ? applyManagedSections(null, [{ id: file.managedId, content: file.content }], { refreshOnly: true }).content
+          : file.content;
+        fs.writeFileSync(targetPath, formatLineEndings(managedContent, lineEnding), 'utf8');
+      }
+      continue;
     }
+
+    const hasMarkers = existing.includes('<!-- agentops:');
+    const shouldManage = hasMarkers || Boolean(file.managedId);
+
+    if (shouldManage) {
+      const { content, status, reason } = applyManagedSections(
+        existing,
+        [{ id: file.managedId ?? file.path, content: file.content }],
+        { refreshOnly: true },
+      );
+
+      changes.push({ path: file.path, status, reason });
+
+      if ((status === 'updated' || status === 'added') && options.mode === 'apply') {
+        fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+        fs.writeFileSync(targetPath, formatLineEndings(content, lineEnding), 'utf8');
+      }
+      continue;
+    }
+
+    changes.push({
+      path: file.path,
+      status: 'skipped',
+      reason: 'refresh mode: no managed markers present',
+    });
   }
 
   const summary = changes.reduce(

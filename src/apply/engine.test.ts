@@ -21,6 +21,19 @@ describe('applyPackFiles', () => {
     expect(fs.existsSync(path.join(dir, 'docs/alpha.md'))).toBe(true);
   });
 
+  it('writes unmanaged files as-is when new', () => {
+    const dir = createTempDir();
+    const result = applyPackFiles(
+      dir,
+      [{ path: 'docs/plain.txt', content: 'hello world' }],
+      { mode: 'apply', strategy: 'refresh' },
+    );
+
+    expect(result.summary.added).toBe(1);
+    const written = fs.readFileSync(path.join(dir, 'docs/plain.txt'), 'utf8');
+    expect(written).toBe('hello world');
+  });
+
   it('does not write file in dry-run mode', () => {
     const dir = createTempDir();
     const result = applyPackFiles(
@@ -41,7 +54,7 @@ describe('applyPackFiles', () => {
 
     const result = applyPackFiles(
       dir,
-      [{ path: 'docs/gamma.md', content: 'new content', managedId: 'gamma' }],
+      [{ path: 'docs/gamma.md', content: 'new content' }],
       { mode: 'dry-run', strategy: 'refresh' },
     );
 

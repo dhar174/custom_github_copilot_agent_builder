@@ -44,4 +44,14 @@ describe('buildPrBody', () => {
     const body = buildPrBody(result, manifest, context);
     expect(body).toContain('Run ID: 123');
   });
+
+  it('sorts signals deterministically', () => {
+    const body = buildPrBody(result, manifest, {
+      ...context,
+      signals: { z: 'zeta', a: 'alpha' },
+    });
+
+    const signalsSection = body.split('### Detected Signals')[1];
+    expect(signalsSection.indexOf('a')).toBeLessThan(signalsSection.indexOf('z'));
+  });
 });
