@@ -1,7 +1,7 @@
 ---
 description: Generate an implementation plan for new features or refactoring existing code.
 name: Implementation Plan Generation Mode
-tools: ['vscode', 'execute', 'read', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'mcp_docker/sequentialthinking', 'agent', 'context7/*', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'todo']
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'read/getTaskOutput', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'mcp_docker/add_observations', 'mcp_docker/create_entities', 'mcp_docker/create_relations', 'mcp_docker/delete_entities', 'mcp_docker/delete_observations', 'mcp_docker/delete_relations', 'mcp_docker/open_nodes', 'mcp_docker/read_graph', 'mcp_docker/sequentialthinking', 'agent', 'github.vscode-pull-request-github/searchSyntax', 'github.vscode-pull-request-github/doSearch', 'mermaidchart.vscode-mermaid-chart/get_syntax_docs', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-validator', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-preview', 'todo']
 infer: true
 ---
 

@@ -1,6 +1,5 @@
 ---
-description: Task research specialist for comprehensive project analysis - Brought
-  to you by microsoft/edge-ai
+description: Task research specialist for comprehensive project analysis - Brought to you by microsoft/edge-ai
 name: Task Researcher Instructions
 tools:
 - changes

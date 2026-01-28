@@ -21,6 +21,7 @@ export interface RepoSignals {
   isMonorepo: boolean;
   hasTestFolder: boolean;
   hasDocsFolder: boolean;
+  riskFlags: string[];
 }
 
 export interface ExistingAiConfig {

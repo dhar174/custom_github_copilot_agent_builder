@@ -1,36 +1,7 @@
 ---
-description: Task planner for creating actionable implementation plans - Brought to
-  you by microsoft/edge-ai
+description: Task planner for creating actionable implementation plans - Brought to you by microsoft/edge-ai
 name: Task Planner Instructions
-tools:
-- changes
-- search/codebase
-- edit/editFiles
-- extensions
-- fetch
-- findTestFiles
-- githubRepo
-- new
-- openSimpleBrowser
-- problems
-- runCommands
-- runNotebooks
-- runTests
-- search
-- search/searchResults
-- runCommands/terminalLastCommand
-- runCommands/terminalSelection
-- testFailure
-- usages
-- vscodeAPI
-- terraform
-- Microsoft Docs
-- azure_get_schema_for_Bicep
-- context7
-- execute
-- read
-- agent
-- todo
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'read/getTaskOutput', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'mcp_docker/add_observations', 'mcp_docker/ask_question', 'mcp_docker/create_entities', 'mcp_docker/create_relations', 'mcp_docker/delete_entities', 'mcp_docker/delete_observations', 'mcp_docker/delete_relations', 'mcp_docker/open_nodes', 'mcp_docker/read_graph', 'mcp_docker/search_nodes', 'mcp_docker/fetch', 'mcp_docker/sequentialthinking', 'agent', 'mermaidchart.vscode-mermaid-chart/get_syntax_docs', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-validator', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-preview', 'todo']
 infer: true
 ---
 

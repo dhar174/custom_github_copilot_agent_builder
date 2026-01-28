@@ -1,23 +1,7 @@
 ---
-description: Strategic planning and architecture assistant focused on thoughtful analysis
-  before implementation. Helps developers understand codebases, clarify requirements,
-  and develop comprehensive implementation strategies.
+description: Strategic planning and architecture assistant focused on thoughtful analysis before implementation. Helps developers understand codebases, clarify requirements, and develop comprehensive implementation strategies.
 name: Plan Mode - Strategic Planning & Architecture
-tools:
-- search/codebase
-- vscode/extensions
-- web/fetch
-- web/githubRepo
-- read/problems
-- azure-mcp/search
-- search/searchResults
-- search/usages
-- vscode/vscodeAPI
-- execute
-- read
-- search
-- agent
-- todo
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'read/getTaskOutput', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'mcp_docker/add_observations', 'mcp_docker/ask_question', 'mcp_docker/create_entities', 'mcp_docker/delete_entities', 'mcp_docker/delete_observations', 'mcp_docker/delete_relations', 'mcp_docker/open_nodes', 'mcp_docker/read_graph', 'mcp_docker/sequentialthinking', 'agent', 'mermaidchart.vscode-mermaid-chart/get_syntax_docs', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-validator', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-preview', 'todo']
 infer: true
 ---
 

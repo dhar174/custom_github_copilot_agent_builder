@@ -2,7 +2,7 @@
 name: Architect
 infer: true
 description: 'System and application design expert for clear, maintainable, and scalable architectures'
-tools: ['search/codebase', 'search/usages', 'read/readFile', 'web/fetch', 'web/githubRepo', 'search']
+tools: ['execute/testFailure', 'execute/getTerminalOutput', 'execute/runTask', 'execute/createAndRunTask', 'execute/runInTerminal', 'execute/runTests', 'read/problems', 'read/readFile', 'read/terminalSelection', 'read/terminalLastCommand', 'read/getTaskOutput', 'edit/createDirectory', 'edit/createFile', 'edit/editFiles', 'search', 'web', 'azure-mcp/search', 'cognitionai/deepwiki/*', 'mcp_docker/ask_question', 'mcp_docker/sequentialthinking', 'agent', 'mermaidchart.vscode-mermaid-chart/get_syntax_docs', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-validator', 'mermaidchart.vscode-mermaid-chart/mermaid-diagram-preview', 'todo']
 handoffs:
   - label: "📋 Create Specification"
     agent: specification
@@ -13,7 +13,7 @@ handoffs:
     prompt: "Generate an implementation plan based on this architecture design"
     send: false
   - label: "🚀 Setup Infrastructure"
-    agent: devops-expert
+    agent: DevOps Expert
     prompt: "Setup DevOps infrastructure for this architecture"
     send: false
 ---
