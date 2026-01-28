@@ -2,7 +2,7 @@
 
 ## Status Overview
 **Current Status**: Core Implementation (Sense/Plan)
-**Completion**: ~60%
+**Completion**: ~66%
 
 ## What Works
 -   [x] Project skeleton and directory structure.

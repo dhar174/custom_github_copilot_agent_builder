@@ -97,6 +97,33 @@ describe('upsertPr', () => {
     expect(result).toEqual({ prNumber: 42, url: 'http://example/pr/42', created: true, updated: false });
   });
 
+  it('does not update PR when no changes and metadata unchanged', async () => {
+    getExecOutputMock.mockResolvedValue({ stdout: '', stderr: '', exitCode: 0 });
+    listMock.mockResolvedValue({
+      data: [
+        {
+          number: 7,
+          html_url: 'http://example/pr/7',
+          title: 'same title',
+          body: 'same body',
+        },
+      ],
+    });
+
+    const result = await upsertPr(context, {
+      branch: 'agentops/test',
+      title: 'same title',
+      body: 'same body',
+      commitMessage: 'noop',
+    });
+
+    expect(result).toEqual({ prNumber: 7, url: 'http://example/pr/7', created: false, updated: false });
+    expect(updateMock).not.toHaveBeenCalled();
+    // Branch push should be skipped when no changes detected
+    const commitCall = execMock.mock.calls.find((call) => call[1]?.[0] === 'commit');
+    expect(commitCall).toBeUndefined();
+  });
+
   it('skips PR creation when there are no changes and no existing PR', async () => {
     getExecOutputMock.mockResolvedValue({ stdout: '', stderr: '', exitCode: 0 });
 

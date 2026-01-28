@@ -39,6 +39,19 @@ export function applyManagedSections(
   let replacements = 0;
 
   for (const section of sections) {
+    const beginMarker = `<!-- agentops:begin ${section.id} -->`;
+    const endMarker = `<!-- agentops:end ${section.id} -->`;
+    const hasBegin = updated.includes(beginMarker);
+    const hasEnd = updated.includes(endMarker);
+
+    if (hasBegin !== hasEnd) {
+      return {
+        content: normalized,
+        status: 'skipped',
+        reason: `Managed markers malformed for ${section.id} (begin/end mismatch)`,
+      };
+    }
+
     const pattern = new RegExp(
       `<!-- agentops:begin ${section.id} -->[\\s\\S]*?<!-- agentops:end ${section.id} -->`,
       'g',

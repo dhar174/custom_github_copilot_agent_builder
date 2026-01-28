@@ -84,4 +84,10 @@ describe('buildPrBody', () => {
 
     expect(body).toContain('_No file changes_');
   });
+
+  it('is deterministic for identical inputs', () => {
+    const body1 = buildPrBody(result, manifest, context);
+    const body2 = buildPrBody(result, manifest, context);
+    expect(body1).toBe(body2);
+  });
 });

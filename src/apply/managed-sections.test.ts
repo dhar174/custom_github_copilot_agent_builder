@@ -52,4 +52,16 @@ describe('applyManagedSections', () => {
     expect(result.status).toBe('skipped');
     expect(result.reason).toContain('no matching section');
   });
+
+  it('skips when begin marker lacks matching end marker', () => {
+    const existing = [
+      'Header',
+      '<!-- agentops:begin alpha -->',
+      'Alpha content without end',
+    ].join('\n');
+
+    const result = applyManagedSections(existing, [{ id: 'alpha', content: 'New content' }], {});
+    expect(result.status).toBe('skipped');
+    expect(result.reason).toContain('malformed');
+  });
 });
