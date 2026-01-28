@@ -93,4 +93,15 @@ describe('applyPackFiles', () => {
     expect(result.summary.updated).toBe(1);
     expect(fs.readFileSync(target, 'utf8')).toBe('new');
   });
+
+  it('is idempotent for managed content in refresh mode', () => {
+    const dir = createTempDir();
+    const files = [{ path: 'docs/managed.md', content: 'managed content', managedId: 'managed' }];
+
+    applyPackFiles(dir, files, { mode: 'apply', strategy: 'refresh' });
+    const second = applyPackFiles(dir, files, { mode: 'dry-run', strategy: 'refresh' });
+
+    expect(second.summary.unchanged).toBe(1);
+    expect(second.noChanges).toBe(true);
+  });
 });

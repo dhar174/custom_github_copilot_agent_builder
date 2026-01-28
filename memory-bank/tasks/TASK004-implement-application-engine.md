@@ -19,16 +19,16 @@ This engine is responsible for the side-effects. It must be safe (AC-3, FR-8). T
 
 ## Progress Tracking
 
-**Overall Status:** In Progress - 65%
+**Overall Status:** In Progress - 80%
 
 ### Subtasks
 | ID | Description | Status | Updated | Notes |
 |----|-------------|--------|---------|-------|
 | 4.1 | Managed Block Logic (TASK-011) | In Progress | 2026-01-27 | Strategy handling safe/refresh/overwrite added; unmanaged new files written raw |
-| 4.2 | File Generation Engine (TASK-012) | In Progress | 2026-01-27 | applyPackFiles strategies + tests (managed/unmanaged behaviors) |
+| 4.2 | File Generation Engine (TASK-012) | In Progress | 2026-01-27 | applyPackFiles strategies + tests (managed/unmanaged behaviors, refresh idempotence) |
 | 4.3 | PR Creation Logic (TASK-013) | Completed | 2026-01-27 | Added upsertPr tests (create/update/skip) |
-| 4.4 | PR Summary Logic (TASK-014) | In Progress | 2026-01-27 | Added deterministic signal ordering test |
-| 4.5 | Idempotence & Payload Tests (TASK-015) | In Progress | 2026-01-27 | Added safe/overwrite coverage, unmanaged refresh skip test, PR upsert & summary stability tests |
+| 4.4 | PR Summary Logic (TASK-014) | In Progress | 2026-01-27 | Added deterministic signal ordering, questions rendering, and no-change message tests |
+| 4.5 | Idempotence & Payload Tests (TASK-015) | In Progress | 2026-01-27 | Added safe/overwrite coverage, unmanaged refresh skip test, refresh idempotence test, PR upsert & summary stability tests |
 
 ## Progress Log
 ### 2026-01-27
@@ -37,3 +37,5 @@ This engine is responsible for the side-effects. It must be safe (AC-3, FR-8). T
 - Added PR branch upsert tests covering create/update/skip flows; updated apply invocation to explicit refresh strategy.
 - Refined refresh handling for unmanaged files (write raw on new, skip unmanaged existing); added tests.
 - Made PR summary signals deterministic and tested; all suites passing.
+- Added refresh-mode idempotence test for managed content and questions rendering test for PR summary; all tests green.
+- Added no-change PR body test for skipped/unchanged files; suites still passing.

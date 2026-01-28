@@ -54,4 +54,34 @@ describe('buildPrBody', () => {
     const signalsSection = body.split('### Detected Signals')[1];
     expect(signalsSection.indexOf('a')).toBeLessThan(signalsSection.indexOf('z'));
   });
+
+  it('renders questions with checkboxes', () => {
+    const body = buildPrBody(result, manifest, {
+      ...context,
+      questions: ['Question A', 'Question B'],
+    });
+
+    expect(body).toContain('Questions & Assumptions');
+    expect(body).toContain('- [ ] Question A');
+    expect(body).toContain('- [ ] Question B');
+  });
+
+  it('renders no-change message when no applicable file changes', () => {
+    const body = buildPrBody(
+      {
+        ...result,
+        changes: [
+          { path: 'ignored.ts', status: 'skipped' },
+          { path: 'noop.ts', status: 'unchanged' },
+        ],
+        summary: { added: 0, updated: 0, unchanged: 1, skipped: 1 },
+        warnings: [],
+        noChanges: true,
+      },
+      manifest,
+      context,
+    );
+
+    expect(body).toContain('_No file changes_');
+  });
 });
